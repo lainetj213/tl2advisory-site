@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TL2 Read</title>
+<meta name="description" content="Blog and News from TL2 Strategic Advisory.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html" aria-current="page">Read</a>
+    <a href="labs.html">Labs</a>
+  </nav>
+  <span class="orb" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#d9d9d9"/><circle cx="16" cy="15" r="7" fill="#9a9a9a"/><circle cx="26" cy="24" r="5" fill="#b5b5b5"/><circle cx="14" cy="27" r="3.5" fill="#7d7d7d"/><circle cx="27" cy="12" r="2.5" fill="#8c8c8c"/><circle cx="20" cy="20" r="19" fill="none" stroke="#fff" stroke-opacity=".5"/></svg></span>
+</header>
+
+<main class="page">
+  <h1>Read</h1>
+  <p class="lede">Notes and papers will appear here.</p>
+  <ul class="posts" id="posts"></ul>
+  <p class="muted" id="empty" style="text-align:center">Nothing published yet.</p>
+</main>
+
+<footer class="site">
+  TL II Strategic Advisory LLC &middot; Cincinnati &middot; &copy; <span id="yr">2026</span>
+</footer>
+
+<script>
+(function () {
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var list = document.getElementById('posts'), empty = document.getElementById('empty');
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  function fmt(d) {
+    var p = String(d || '').split('-');
+    if (p.length !== 3) return d || '';
+    var dt = new Date(+p[0], +p[1] - 1, +p[2]);
+    return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  fetch('news/posts.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (rows) {
+      rows = (Array.isArray(rows) ? rows : []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+      if (!rows.length) return;
+      rows.forEach(function (p) {
+        var li = el('li'), h = el('h2');
+        li.appendChild(el('div', 'date', fmt(p.date)));
+        if (p.file) { var a = el('a', null, p.title); a.href = 'news/' + p.file; h.appendChild(a); }
+        else h.textContent = p.title;
+        if (p.sample) h.appendChild(el('span', 'tag', 'Sample'));
+        li.appendChild(h);
+        if (p.summary) li.appendChild(el('p', null, p.summary));
+        list.appendChild(li);
+      });
+      empty.hidden = true;
+    })
+    .catch(function () { empty.hidden = false; });
+})();
+</script>
+</body>
+</html>
