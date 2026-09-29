@@ -58,6 +58,13 @@ nav.top a:hover, nav.top a[aria-current="page"] { color: var(--text); }
 .muted { color: var(--muted); }
 p { margin: 0 0 12px; }
 
+/* Under-development box */
+.devbox { margin: 88px auto 0; max-width: 560px; text-align: left; border: 1px solid var(--line); border-radius: 12px; background: var(--fill); padding: 20px 22px; }
+.devbox .eyebrow { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.devbox .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; }
+.devbox h2 { font-weight: 700; font-size: 1.25rem; margin: 0 0 8px; }
+.devbox p:last-child { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
 /* Sweep */
 .sweep { background: var(--fill); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: inline-block; max-width: 100%; text-align: left; margin-top: 18px; }
 .sweep-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; }
