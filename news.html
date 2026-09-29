@@ -9,7 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("tl2-theme");if(t&&t!=="black")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
 <script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -18,26 +20,33 @@
   <nav class="top" aria-label="Primary">
     <a href="index.html#look">Look</a>
     <a href="index.html#play">Play</a>
-    <a href="labs.html">Labs</a>
     <a href="news.html" aria-current="page">Read</a>
+    <a href="labs.html">Labs</a>
+    <a href="signal.html">Signal</a>
   </nav>
-  <span class="orb" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#d9d9d9"/><circle cx="16" cy="15" r="7" fill="#9a9a9a"/><circle cx="26" cy="24" r="5" fill="#b5b5b5"/><circle cx="14" cy="27" r="3.5" fill="#7d7d7d"/><circle cx="27" cy="12" r="2.5" fill="#8c8c8c"/><circle cx="20" cy="20" r="19" fill="none" stroke="#fff" stroke-opacity=".5"/></svg></span>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
 </header>
 
 <main class="page">
   <h1>Read</h1>
-  <p class="lede">Notes and papers will appear here.</p>
+  <p class="lede">Notes and papers will appear here. <a href="news/feed.xml">RSS</a></p>
   <ul class="posts" id="posts"></ul>
   <p class="muted" id="empty" style="text-align:center">Nothing published yet.</p>
 </main>
 
 <footer class="site">
-  TL II Strategic Advisory LLC &middot; Cincinnati &middot; &copy; <span id="yr">2026</span>
- &middot; <span class="ver">v6 · 2026.09.29</span></footer>
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned</p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v7 · 2026.09.29</span></p>
+</footer>
 
 <script>
 (function () {
-  document.getElementById('yr').textContent = new Date().getFullYear();
   var list = document.getElementById('posts'), empty = document.getElementById('empty');
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
   function fmt(d) {
@@ -66,5 +75,6 @@
     .catch(function () { empty.hidden = false; });
 })();
 </script>
+<script src="site.js"></script>
 </body>
 </html>

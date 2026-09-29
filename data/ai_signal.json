@@ -1,0 +1,29 @@
+{
+  "signal": "ai_signal",
+  "as_of": "2026-09-29",
+  "status": "published",
+  "source": "TL2 summaries of public reporting; each item links to its source.",
+  "items": [
+    {
+      "headline": "Rising Treasury yields raise the cost of the AI buildout",
+      "line": "CNBC reports that the jump in bond yields is making debt more expensive for data center and AI infrastructure companies that borrow heavily to build.",
+      "link": "https://www.cnbc.com/2026/09/27/debt-hungry-data-center-companies-increased-risk-bond-yields-spike.html",
+      "source": "CNBC",
+      "date": "2026-09-27"
+    },
+    {
+      "headline": "Anthropic ships Sonnet 5.5 at the same list price",
+      "line": "Anthropic says the new mid-tier model runs faster and costs less to operate than Sonnet 5; Simon Willison's first-look notes are at the link.",
+      "link": "https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/",
+      "source": "Simon Willison",
+      "date": "2026-09-28"
+    },
+    {
+      "headline": "Personal-agent startup Instinct raises $1 billion",
+      "line": "TechCrunch reports the Series C values the company at $10 billion.",
+      "link": "https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/",
+      "source": "TechCrunch",
+      "date": "2026-09-28"
+    }
+  ]
+}

@@ -9,7 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("tl2-theme");if(t&&t!=="black")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
 <script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -18,10 +20,16 @@
   <nav class="top" aria-label="Primary">
     <a href="#look" aria-current="page">Look</a>
     <a href="#play">Play</a>
-    <a href="labs.html">Labs</a>
     <a href="news.html">Read</a>
+    <a href="labs.html">Labs</a>
+    <a href="signal.html">Signal</a>
   </nav>
-  <span class="orb" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#d9d9d9"/><circle cx="16" cy="15" r="7" fill="#9a9a9a"/><circle cx="26" cy="24" r="5" fill="#b5b5b5"/><circle cx="14" cy="27" r="3.5" fill="#7d7d7d"/><circle cx="27" cy="12" r="2.5" fill="#8c8c8c"/><circle cx="20" cy="20" r="19" fill="none" stroke="#fff" stroke-opacity=".5"/></svg></span>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
 </header>
 
 <main class="stage">
@@ -30,23 +38,27 @@
       <h2 id="signal-h">Signal</h2>
       <p>The world, live: markets, weather, shipping and conflict on one map. Worth a look once a day.</p>
       <a class="pill" href="https://worldmonitor.app" target="_blank" rel="noopener" data-goatcounter-click="open-map">Open the map</a>
+      <p class="side-more">Something to listen to while you read: radio from any decade, anywhere on the map.</p>
+      <a class="pill" href="https://app.radiooooo.com" target="_blank" rel="noopener" data-goatcounter-click="open-radiooooo">Open Radiooooo</a>
+      <p class="side-link"><a href="signal.html" data-goatcounter-click="signal-from-home">All of Signal &rarr;</a></p>
     </div>
   </aside>
 
   <div class="center">
-    <section id="look" aria-labelledby="piece-title">
+    <section id="look" aria-label="Look">
       <p class="lead">Make the next move a better one.</p>
-      <div class="piece" id="piece" role="img" aria-label="A generated abstract study"></div>
-      <h1 class="title" id="piece-title">Untitled</h1>
-      <p class="caption" id="piece-caption">TL2 Labs</p>
-      <button class="again" id="again" type="button">Draw another</button>
-    </section>
-
-    <section class="devbox" aria-labelledby="dev-h">
+      <section class="devbox" aria-labelledby="dev-h">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Under development</p>
       <h2 id="dev-h">Something is being built here.</h2>
       <p>We are not ready to say much yet, and that is by design. The work comes first; the explanation follows. Check back soon, or reach out if you would rather not wait.</p>
+      </section>
+      <p class="wait">While you wait</p>
+      <div class="piece" id="piece" role="img" aria-label="A generated abstract study"></div>
+      <h1 class="title" id="piece-title">Untitled</h1>
+      <p class="caption" id="piece-caption">TL2 Labs</p>
+      <button class="again" id="again" type="button" data-goatcounter-click="draw-another">Draw another</button>
     </section>
+
 
     <section class="block" id="play" aria-labelledby="sweep-h">
       <h2 id="sweep-h">Sweep</h2>
@@ -65,6 +77,27 @@
       </div>
     </section>
 
+    <section class="block signup" id="signup" aria-labelledby="signup-h" hidden>
+      <h2 id="signup-h">Updates, now and then</h2>
+      <p class="muted">A short note when something new ships. No noise, and you can leave any time.</p>
+      <form id="signup-form" method="post" target="_blank">
+        <label class="vh" for="signup-email">Email address</label>
+        <input type="email" name="email" id="signup-email" placeholder="you@example.com" autocomplete="email" required>
+        <input type="hidden" name="embed" value="1">
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+      <p class="signup-said" id="signup-said" aria-live="polite"></p>
+      <p class="fine"><a id="signup-q" href="#" target="_blank" rel="noopener" data-goatcounter-click="signup-questions">Four optional questions</a>: what brought you here, what you would like to see, who you are, and how you found us.</p>
+    </section>
+
+    <section class="hf" aria-labelledby="hf-h">
+      <button class="hf-btn" id="high-five" type="button" data-goatcounter-click="high-five" aria-describedby="hf-said">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g class="hf-hand"><rect x="16" y="26" width="30" height="28" rx="12"/><rect x="17" y="10" width="7" height="24" rx="3.5"/><rect x="25" y="6" width="7" height="26" rx="3.5"/><rect x="33" y="8" width="7" height="24" rx="3.5"/><rect x="41" y="14" width="6.5" height="20" rx="3.25"/><rect x="5" y="30" width="18" height="7" rx="3.5" transform="rotate(35 14 33)"/><circle class="hf-eye" cx="26" cy="40" r="2"/><circle class="hf-eye" cx="36" cy="40" r="2"/><path class="hf-smile" d="M26 46 q5 4 10 0"/></g></svg>
+        <span id="hf-h">Give us a high five</span>
+      </button>
+      <p class="muted hf-said" id="hf-said" aria-live="polite">Let us know you stopped by.</p>
+    </section>
+
     <section class="contact" aria-labelledby="contact-h">
       <h2 id="contact-h">Inquiries</h2>
       <p><a href="mailto:info@tl2advisory.com" data-goatcounter-click="email">info@tl2advisory.com</a></p>
@@ -74,13 +107,17 @@
   <aside class="side right" aria-labelledby="labs-h">
     <div class="note">
       <h2 id="labs-h">TL2 Labs</h2>
-      <p>Small things built to think with. Games, generated studies, a live signal board, and whatever comes next.</p>
+      <p>Small things built to think with. Games, generated studies, a weekly signal page, and whatever comes next.</p>
       <a class="pill" href="labs.html" data-goatcounter-click="enter-labs">Enter Labs</a>
     </div>
   </aside>
 </main>
 
-<footer class="site">Numbers built to be challenged. &middot; TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned &middot; &copy; <span id="yr">2026</span> &middot; <span class="ver">v6 · 2026.09.29</span></footer>
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned</p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v7 · 2026.09.29</span></p>
+</footer>
 
 <script>
 /* The piece: a new abstract study on every load, from a random seed. */
@@ -293,5 +330,6 @@
   build();
 })();
 </script>
+<script src="site.js"></script>
 </body>
 </html>

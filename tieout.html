@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TL2 Tie-Out</title>
+<meta name="description" content="Tie-Out: switch cells until every row and column balances.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("tl2-theme");if(t&&t!=="black")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+.tie { margin: 0 auto 48px; max-width: 420px; }
+.tie-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 16px; }
+.tie-size { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+.tie-size button, .tie-new { font: inherit; font-size: 0.85rem; color: var(--text); background: none; border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; min-height: 32px; }
+.tie-size button[aria-pressed="true"] { background: var(--text); color: var(--bg); font-weight: 600; }
+.tie-new { border: 1px solid var(--border); }
+.tie-new:hover, .tie-size button:hover:not([aria-pressed="true"]) { background: var(--fill); }
+.tie-moves { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tie-grid { display: grid; gap: 6px; font-variant-numeric: tabular-nums; }
+.tie-cell { font: inherit; font-weight: 600; font-size: 1.25rem; aspect-ratio: 1; min-width: 40px; min-height: 40px; border-radius: 8px; cursor: pointer; padding: 0;
+  background: var(--cell); color: var(--text); border: 1px solid var(--border); transition: background .15s var(--ease), color .15s var(--ease), opacity .15s var(--ease); }
+.tie-cell[aria-pressed="false"] { background: var(--cell-open); color: var(--muted); border: 1px dashed var(--border); opacity: .7; text-decoration: line-through; text-decoration-thickness: 1px; }
+.tie-cell:hover { border-color: var(--text); }
+.tie-cell:focus-visible, .tie-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tie-t { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; min-width: 40px; border-radius: 8px; border: 1px solid var(--line); background: var(--fill); line-height: 1.1; }
+.tie-t b { font-size: 1.05rem; font-weight: 700; }
+.tie-t small { font-size: 0.68rem; color: var(--muted); }
+.tie-t.ok { background: var(--accent); border-color: var(--accent); color: var(--on-text); }
+.tie-t.ok small { color: var(--on-text); }
+.tie-corner { aspect-ratio: 1; }
+.tie-msg { min-height: 1.6em; margin: 16px 0 0; text-align: center; font-weight: 600; font-size: 1.1rem; }
+.tie-msg.won { color: var(--accent); }
+.tie-how { margin: 6px 0 0; text-align: center; font-size: 0.85rem; color: var(--muted); }
+.tie.won .tie-cell { cursor: default; }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html" aria-current="page">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Tie-Out</h1>
+  <p class="lede">A grid of small numbers with a target at the end of every row and column. Switch cells on and off until everything balances.</p>
+
+  <section class="tie" id="tie" aria-label="Tie-Out puzzle">
+    <div class="tie-bar">
+      <div class="tie-size" role="group" aria-label="Grid size">
+        <button type="button" data-n="4" aria-pressed="true">4&times;4</button>
+        <button type="button" data-n="5" aria-pressed="false">5&times;5</button>
+      </div>
+      <span class="tie-moves" id="tie-moves" aria-live="polite">0 moves</span>
+      <button type="button" class="tie-new" id="tie-new">New grid</button>
+    </div>
+    <div class="tie-grid" id="tie-grid" role="grid" aria-label="Number grid"></div>
+    <p class="tie-msg" id="tie-msg" role="status" aria-live="polite"></p>
+    <p class="tie-how">Tap a number to switch it off or back on. A row or column ties when the numbers still on add up to its target. Arrow keys move, Enter or Space switches.</p>
+  </section>
+</main>
+
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned</p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v7 · 2026.09.29</span></p>
+</footer>
+
+<script>
+/* Tie-Out. Each grid is built from a seed: random digits 1-9 plus a hidden keep-mask; the targets are the
+   sums of the kept cells, so the mask itself is always a solution. Every line keeps at least one cell and
+   drops at least one, so no line ties at the start and no target is zero. */
+(function () {
+  function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function make(n, seed) {
+    var r = rng(seed), d = [], m = [], i, j, ok;
+    for (i = 0; i < n * n; i++) d.push(1 + Math.floor(r() * 9));
+    do {
+      m = []; for (i = 0; i < n * n; i++) m.push(r() < 0.55);
+      ok = true;
+      for (i = 0; i < n && ok; i++) {
+        var rk = 0, ck = 0;
+        for (j = 0; j < n; j++) { rk += m[i * n + j]; ck += m[j * n + i]; }
+        if (rk === 0 || rk === n || ck === 0 || ck === n) ok = false;
+      }
+    } while (!ok);
+    var rows = [], cols = [];
+    for (i = 0; i < n; i++) { var rs = 0, cs = 0; for (j = 0; j < n; j++) { if (m[i * n + j]) rs += d[i * n + j]; if (m[j * n + i]) cs += d[j * n + i]; } rows.push(rs); cols.push(cs); }
+    return { n: n, d: d, rows: rows, cols: cols };
+  }
+  if (typeof module !== 'undefined') { module.exports = make; return; }
+
+  var grid = document.getElementById('tie-grid'), box = document.getElementById('tie');
+  var movesEl = document.getElementById('tie-moves'), msg = document.getElementById('tie-msg');
+  var sizeBtns = document.querySelectorAll('.tie-size button');
+  var P, on, cells, rowT, colT, moves, won, focusAt = 0, size = 4;
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+  function target(t, label) { var d = el('div', 'tie-t'); d.setAttribute('role', 'gridcell'); d.appendChild(el('b', null, String(t))); var s = el('small'); d.appendChild(s); d.setAttribute('aria-label', label + ' target ' + t); return d; }
+
+  function build(n) {
+    P = make(n, Math.floor(Math.random() * 4294967296));
+    on = P.d.map(function () { return true; });
+    moves = 0; won = false; focusAt = 0; cells = []; rowT = []; colT = [];
+    box.classList.remove('won'); msg.textContent = ''; msg.classList.remove('won');
+    grid.textContent = '';
+    grid.style.gridTemplateColumns = 'repeat(' + (n + 1) + ', minmax(40px, 1fr))';
+    for (var i = 0; i < n; i++) {
+      var row = el('div'); row.setAttribute('role', 'row'); row.style.display = 'contents';
+      for (var j = 0; j < n; j++) {
+        var k = i * n + j, c = el('button', 'tie-cell', String(P.d[k]));
+        c.type = 'button'; c.setAttribute('role', 'gridcell'); c.dataset.k = k; c.tabIndex = k === 0 ? 0 : -1;
+        c.setAttribute('aria-label', 'Row ' + (i + 1) + ', column ' + (j + 1) + ', ' + P.d[k]);
+        cells.push(c); row.appendChild(c);
+      }
+      var rt = target(P.rows[i], 'Row ' + (i + 1)); rowT.push(rt); row.appendChild(rt);
+      grid.appendChild(row);
+    }
+    var last = el('div'); last.setAttribute('role', 'row'); last.style.display = 'contents';
+    for (j = 0; j < n; j++) { var ct = target(P.cols[j], 'Column ' + (j + 1)); colT.push(ct); last.appendChild(ct); }
+    var corner = el('div', 'tie-corner'); corner.setAttribute('aria-hidden', 'true'); last.appendChild(corner);
+    grid.appendChild(last);
+    render();
+  }
+
+  function render() {
+    var n = P.n, all = true, i, j;
+    for (i = 0; i < n * n; i++) cells[i].setAttribute('aria-pressed', on[i] ? 'true' : 'false');
+    for (i = 0; i < n; i++) {
+      var rs = 0, cs = 0;
+      for (j = 0; j < n; j++) { if (on[i * n + j]) rs += P.d[i * n + j]; if (on[j * n + i]) cs += P.d[j * n + i]; }
+      all = line(rowT[i], rs, P.rows[i]) && all;
+      all = line(colT[i], cs, P.cols[i]) && all;
+    }
+    movesEl.textContent = moves + (moves === 1 ? ' move' : ' moves');
+    if (all && !won) {
+      won = true; box.classList.add('won');
+      msg.textContent = 'Tied out.'; msg.classList.add('won');
+      if (window.goatcounter && goatcounter.count) goatcounter.count({path: 'tieout-win', title: 'Tie-Out win', event: true});
+    }
+  }
+  function line(t, sum, goal) {
+    var ok = sum === goal; t.classList.toggle('ok', ok);
+    t.querySelector('small').textContent = ok ? 'tied' : 'at ' + sum;
+    return ok;
+  }
+  function toggle(k) { if (won) return; on[k] = !on[k]; moves++; render(); }
+  function focus(k) { cells[focusAt].tabIndex = -1; focusAt = k; cells[k].tabIndex = 0; cells[k].focus(); }
+
+  grid.addEventListener('click', function (e) {
+    var c = e.target.closest('.tie-cell'); if (!c) return;
+    var k = +c.dataset.k; if (k !== focusAt) { cells[focusAt].tabIndex = -1; focusAt = k; c.tabIndex = 0; }
+    toggle(k);
+  });
+  grid.addEventListener('keydown', function (e) {
+    var c = e.target.closest('.tie-cell'); if (!c) return;
+    var n = P.n, k = +c.dataset.k, r = Math.floor(k / n), col = k % n;
+    switch (e.key) {
+      case 'ArrowLeft': col = (col + n - 1) % n; break;
+      case 'ArrowRight': col = (col + 1) % n; break;
+      case 'ArrowUp': r = (r + n - 1) % n; break;
+      case 'ArrowDown': r = (r + 1) % n; break;
+      /* Enter and Space fall through to the button's native click */
+      default: return;
+    }
+    e.preventDefault(); focus(r * n + col);
+  });
+  document.getElementById('tie-new').addEventListener('click', function () { build(size); });
+  Array.prototype.forEach.call(sizeBtns, function (b) {
+    b.addEventListener('click', function () {
+      size = +b.dataset.n;
+      Array.prototype.forEach.call(sizeBtns, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      build(size);
+    });
+  });
+  build(size);
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "signal": "rates",
+  "as_of": "2026-09-25",
+  "built": "2026-09-29T02:08:04",
+  "cadence": "weekly build; daily series, last available close",
+  "source": "Board of Governors of the Federal Reserve System (US), H.15 Selected Interest Rates, retrieved from FRED, Federal Reserve Bank of St. Louis",
+  "notice": "Not endorsed or certified by the Federal Reserve Bank of St. Louis.",
+  "series": [
+    {
+      "id": "DGS10",
+      "label": "10-year Treasury",
+      "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity",
+      "value": 5.17,
+      "date": "2026-09-25",
+      "chg_week": 0.16,
+      "chg_year": 0.99,
+      "unit": "percent",
+      "url": "https://fred.stlouisfed.org/series/DGS10"
+    },
+    {
+      "id": "DGS2",
+      "label": "2-year Treasury",
+      "title": "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity",
+      "value": 4.81,
+      "date": "2026-09-25",
+      "chg_week": 0.05,
+      "chg_year": 1.17,
+      "unit": "percent",
+      "url": "https://fred.stlouisfed.org/series/DGS2"
+    },
+    {
+      "id": "DPRIME",
+      "label": "Bank prime rate",
+      "title": "Bank Prime Loan Rate",
+      "value": 7.0,
+      "date": "2026-09-25",
+      "chg_week": 0.0,
+      "chg_year": -0.25,
+      "unit": "percent",
+      "url": "https://fred.stlouisfed.org/series/DPRIME"
+    }
+  ]
+}

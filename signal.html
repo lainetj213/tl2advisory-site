@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TL2 Signal</title>
+<meta name="description" content="Signal from TL2: a short, checked read on what is moving.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("tl2-theme");if(t&&t!=="black")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html">Labs</a>
+    <a href="signal.html" aria-current="page">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Signal</h1>
+  <p class="lede">Signal is our short read on what is moving. A few developments worth knowing about, a plain market reference, and links we keep going back to. A person checks every write-up before it posts, and each one links to its source. The rates come straight from the Federal Reserve's published series.</p>
+
+  <nav class="jump" aria-label="On this page"><a href="#ai-signal">AI Signal</a><a href="#rates">Rates</a><a href="#lines">News lines</a><a href="#good">A Few Good Links</a></nav>
+
+  <section class="signal-panel" id="ai-signal" aria-labelledby="ai-h" hidden>
+    <p class="sig-h"><span class="dot" aria-hidden="true"></span><span id="ai-kind">Weekly</span></p>
+    <h2 id="ai-h">AI Signal</h2>
+    <p class="asof" id="ai-asof"></p>
+    <ol class="sig-list" id="ai-list"></ol>
+    <p class="muted sig-empty" id="ai-empty" hidden>This week's cut is awaiting review.</p>
+    <p class="fine">A few AI developments that matter to finance and advisory work, summarized in our words. Each links to its source; company claims are the company's own. General information only, not advice.</p>
+  </section>
+
+  <section class="signal-panel rates" id="rates" aria-labelledby="rates-h" hidden>
+    <p class="sig-h"><span class="dot" aria-hidden="true"></span>Weekly</p>
+    <h2 id="rates-h">Rates reference</h2>
+    <dl id="rates-list"></dl>
+    <p class="asof" id="rates-asof"></p>
+    <p class="fine">Market reference, updated weekly, not live. Source: Board of Governors of the Federal Reserve System (US), H.15, retrieved from FRED, Federal Reserve Bank of St. Louis. Not endorsed or certified by the Federal Reserve Bank of St. Louis. General information only, not investment, tax or valuation advice.</p>
+  </section>
+
+  <section class="signal-panel soon" id="lines" aria-labelledby="lines-h">
+    <p class="sig-h"><span class="dot" aria-hidden="true"></span>Coming</p>
+    <h2 id="lines-h">News lines</h2>
+    <p class="muted">One line each on deals, lending and the small-business economy. Being built now.</p>
+  </section>
+
+  <section class="signal-panel" id="good" aria-labelledby="good-h">
+    <p class="sig-h"><span class="dot" aria-hidden="true"></span>Growing</p>
+    <h2 id="good-h">A Few Good Links</h2>
+    <ul class="good-list">
+      <li><a href="https://worldmonitor.app" target="_blank" rel="noopener" data-goatcounter-click="good-worldmonitor">World Monitor</a><span>Markets, weather, shipping and conflict on one live map.</span></li>
+      <li><a href="https://app.radiooooo.com" target="_blank" rel="noopener" data-goatcounter-click="good-radiooooo">Radiooooo</a><span>Pick a country and a decade and hear what was on the radio.</span></li>
+    </ul>
+    <p class="side-link"><a href="links.html">The whole list &rarr;</a></p>
+  </section>
+</main>
+
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned</p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v7 · 2026.09.29</span></p>
+</footer>
+
+<script>
+/* AI Signal public cut: reads data/ai_signal.json (approved items only). Staleness judged at load against as_of.
+   Local preview of an unapproved draft: signal.html?draft=1, honored only on localhost / 127.0.0.1 under
+   `build_signals.py preview`. Drafts live outside the site tree; on the live host the flag is ignored. */
+(function () {
+  var STALE_DAYS = 10;
+  var box = document.getElementById('ai-signal'), list = document.getElementById('ai-list');
+  var asof = document.getElementById('ai-asof'), empty = document.getElementById('ai-empty'), kind = document.getElementById('ai-kind');
+  var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  var draft = local && /(^|[?&])draft=1(&|$)/.test(location.search);
+  function day(s) { var p = String(s || '').split('-'); return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2], 12) : null; }
+  function fmt(d, y) { return d.toLocaleDateString('en-US', y ? { year: 'numeric', month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric' }); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  function pending(j) {
+    var c = day(j && j.checked);
+    empty.textContent = 'This week\u2019s cut is awaiting review' + (c ? ' (checked ' + fmt(c, true) + ').' : '.');
+    empty.hidden = false; asof.textContent = ''; box.hidden = false;
+  }
+  function load(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  (draft ? load('_drafts/ai_signal_draft.json').catch(function () { draft = false; return load('data/ai_signal.json'); }) : load('data/ai_signal.json'))
+    .then(function (j) {
+      var items = (j.items || []).filter(function (it) { return it.headline && it.link; });
+      var d = day(draft ? j.drafted : j.as_of);
+      if (!items.length || !d) return pending(j);
+      items.forEach(function (it) {
+        var li = el('li'), h = el('h3'), a = el('a', null, it.headline);
+        a.href = it.link; a.target = '_blank'; a.rel = 'noopener'; h.appendChild(a); li.appendChild(h);
+        li.appendChild(el('p', null, it.line));
+        var dd = day(it.date);
+        li.appendChild(el('div', 'meta', it.source + (dd ? ' \u00b7 ' + fmt(dd) : '')));
+        list.appendChild(li);
+      });
+      var age = Math.floor((new Date() - d) / 864e5);
+      if (draft) { kind.textContent = 'Draft preview, not approved'; box.classList.add('draft'); asof.textContent = 'Drafted ' + fmt(d, true); }
+      else if (age > STALE_DAYS) { box.classList.add('stale'); asof.textContent = 'Not updated since ' + fmt(d, true); }
+      else asof.textContent = 'Week of ' + fmt(d, true);
+      box.hidden = false;
+    })
+    .catch(function () { /* no data file: the panel stays hidden */ });
+})();
+/* Rates reference: reads data/rates.json. Staleness is judged here, at load, against as_of. */
+(function () {
+  var STALE_DAYS = 12; /* as_of is the last posted close (H.15 posts a day or two late); a weekly build can reach 10 to 11 days */
+  var box = document.getElementById('rates'), list = document.getElementById('rates-list'), asof = document.getElementById('rates-asof');
+  function day(s) { var p = String(s || '').split('-'); return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2], 12) : null; }
+  function fmt(d) { return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }); }
+  function chg(v) { if (v === null || v === undefined) return 'n/a'; var t = Math.abs(v).toFixed(2); return (v > 0 ? '+' : v < 0 ? '\u2212' : '') + t; }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  fetch('data/rates.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (j) {
+      var d = day(j.as_of); if (!d || !j.series || !j.series.length) return;
+      j.series.forEach(function (s) {
+        var dt = el('dt'), a = el('a', null, s.label); a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.title = s.title; dt.appendChild(a);
+        var dd = el('dd', null, s.value.toFixed(2) + '%');
+        dd.appendChild(el('span', 'chg', 'wk ' + chg(s.chg_week) + ' \u00b7 yr ' + chg(s.chg_year)));
+        list.appendChild(dt); list.appendChild(dd);
+      });
+      var age = Math.floor((new Date() - d) / 864e5);
+      if (age > STALE_DAYS) { box.classList.add('stale'); asof.textContent = 'Not updated since ' + fmt(d); }
+      else asof.textContent = 'As of the ' + fmt(d) + ' close. Changes in percentage points.';
+      box.hidden = false;
+    })
+    .catch(function () { /* no data file: the strip stays hidden */ });
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>
