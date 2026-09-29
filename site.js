@@ -7,7 +7,7 @@
   /* Signup: Buttondown holds the email, Tally holds the optional questions. Blank = the section stays hidden on the live site. */
   var SIGNUP = { buttondown: '', tally: 'https://tally.so/r/WOxNOe' }; /* buttondown: 'tl2advisory' goes in once Buttondown lifts its review hold */
 
-  /* Themes. Black is the default; the others are previews Tom is weighing. */
+  /* Themes. Navy is the default; the rest are one click away. */
   var THEMES = [
     { id: 'black', name: 'Black', meta: '#000000' },
     { id: 'navy', name: 'Navy', meta: '#101e2a' },
@@ -22,7 +22,7 @@
     if (b) { b.title = 'Colors: ' + t.name + '. Click for the next set.'; b.setAttribute('aria-label', 'Change colors, now ' + t.name); }
     return t;
   }
-  var cur = applyTheme(store('tl2-theme') || 'black');
+  var cur = applyTheme(store('tl2-theme') || 'navy'); /* Navy is the default look (Tom, 2026.09.29); Black stays in the rotation. */
   var tb = document.getElementById('theme-btn');
   if (tb) tb.addEventListener('click', function () {
     var i = THEMES.map(function (x) { return x.id; }).indexOf(cur.id);
