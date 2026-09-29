@@ -225,3 +225,5 @@ footer.site .motto { color: var(--text); font-weight: 600; letter-spacing: 0.02e
 @media (max-width: 400px) { nav.top { gap: 16px; flex-wrap: wrap; font-size: 0.78rem; } }
 /* "All of Signal" sat flush under the Radiooooo pill: .side p outranks .side-link, so give it its own room. */
 .side .side-link { margin: 26px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.85rem; }
+/* Footer motto: larger, in the accent. 1.2rem bold keeps it "large text", so the orange passes contrast on the light themes too. */
+footer.site .motto { font-size: 1.2rem; color: var(--accent); letter-spacing: 0.01em; margin-bottom: 12px; }
