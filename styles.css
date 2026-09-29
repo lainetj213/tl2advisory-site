@@ -178,6 +178,8 @@ footer.site { text-align: center; padding: 64px 16px 40px; font-size: 0.78rem; c
 .signup .btn { font-size: 0.85rem; padding: 8px 18px; }
 .signup-said { font-size: 0.85rem; min-height: 1.2em; margin: 10px 0 0; }
 .signup .fine a { color: var(--muted); }
+.signup .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+footer.site .feedback a { color: var(--muted); font-size: 0.85rem; }
 .signup.unwired form { outline: 1px dashed var(--border); outline-offset: 8px; border-radius: 12px; }
 .hf { padding: 72px 0 0; }
 .hf-btn { display: inline-flex; align-items: center; gap: 12px; font: inherit; font-weight: 600; font-size: 0.95rem; color: var(--text); background: var(--fill); border: 1px solid var(--line); border-radius: 999px; padding: 8px 20px 8px 10px; cursor: pointer; transition: border-color .3s var(--ease); }

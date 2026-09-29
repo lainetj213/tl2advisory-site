@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cooperate or undercut? · TL2 Strategic Advisory</title>
+<meta name="description" content="Two firms. Ten rounds. Your next move can change theirs.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta property="og:title" content="TL2 Cooperate or undercut?">
+<meta property="og:description" content="Two firms. Ten rounds. Your next move can change theirs.">
+<meta property="og:url" content="https://tl2advisory.com/dilemma.html">
+<meta property="og:image" content="https://tl2advisory.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tl2. Make the next move a better one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+.game { max-width: 540px; margin: 0 auto 40px; min-width: 0; }
+.game * { box-sizing: border-box; }
+.game .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0; }
+.game button, .game select, .game input { font: inherit; color: var(--text); background: var(--fill); border: 1px solid var(--border); border-radius: 8px; min-height: 44px; padding: 8px 12px; max-width: 100%; }
+.game button { cursor: pointer; touch-action: manipulation; }
+.game button:hover:not(:disabled) { background: var(--cell-hover); }
+.game button:disabled { opacity: .55; cursor: default; }
+.game button:focus-visible, .game input:focus-visible, .game select:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+.game .primary { background: var(--text); color: var(--bg); font-weight: 600; }
+.game .primary:hover:not(:disabled) { background: var(--text); }
+.game .panel { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--fill); margin: 16px 0; }
+.game h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.game .status { min-height: 3.2em; font-weight: 600; margin: 16px 0; }
+.game .help { font-size: .85rem; color: var(--muted); }
+.game table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .85rem; }
+.game th, .game td { border-bottom: 1px solid var(--line); padding: 9px 4px; text-align: left; overflow-wrap: anywhere; }
+.game caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
+.game .score { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.game [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html" aria-current="true">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+<main class="page">
+<h1>Cooperate or undercut?</h1>
+<p class="lede">Two firms. Ten rounds. Your next move can change theirs.</p>
+<section class="game" aria-label="Cooperate or undercut?">
+<div class="panel"><table><caption>Points each round: you / other firm</caption><thead><tr><th scope="col">Your choice</th><th scope="col">They cooperate</th><th scope="col">They undercut</th></tr></thead><tbody><tr><th scope="row">Cooperate</th><td>3 / 3</td><td>0 / 5</td></tr><tr><th scope="row">Undercut</th><td>5 / 0</td><td>1 / 1</td></tr></tbody></table></div>
+<p class="help">Both choices are locked before either is revealed. The other firm follows one hidden strategy for all ten rounds.</p><p id="score" class="score"></p><div class="bar"><button class="primary" id="cooperate" data-goatcounter-click="dilemma-cooperate">Cooperate</button><button id="defect" data-goatcounter-click="dilemma-undercut">Undercut</button><button id="new" data-goatcounter-click="dilemma-new">New match</button></div><p id="status" class="status" role="status" aria-live="polite"></p>
+<ol id="history" class="help"></ol><div id="reveal" class="panel" hidden><h2 id="identity"></h2><p id="lesson"></p></div>
+<noscript><p>This game needs JavaScript enabled.</p></noscript></section>
+</main>
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+</footer>
+
+<script>
+(function () {
+"use strict";
+const $ = id => document.getElementById(id);
+
+const names=['Tit-for-Tat','Always Defect','Always Cooperate','Grim Trigger','Random','Tit-for-Two-Tats'];
+const lessons=[
+ 'In Axelrod’s tournaments, Tit-for-Tat showed how starting with cooperation and then responding in kind can support reciprocity. It rewards cooperation and answers an undercut, but returns to cooperation when you do.',
+ 'Always Defect takes the short-term advantage whenever the other firm cooperates. Axelrod’s tournaments showed why repeated interaction can reward reciprocity instead of relentless exploitation.',
+ 'Always Cooperate creates room for mutual gains but never responds to exploitation. Axelrod’s tournaments highlighted the value of pairing a cooperative opening with a response to the other player.',
+ 'Grim Trigger cooperates until one undercut, then undercuts for every remaining round. Axelrod’s work on repeated play helps explain why retaliation matters, while forgiveness can keep one bad round from ending cooperation.',
+ 'Random chooses independently each round, so your cooperation cannot build a predictable response. Axelrod’s tournaments showed how clear, reciprocal behavior can make cooperation easier to sustain.',
+ 'Tit-for-Two-Tats waits for two consecutive undercuts before responding. Axelrod’s tournaments illustrate the tradeoff: forgiveness can preserve cooperation but can also invite exploitation.'
+];
+let strategy, history, own, other;
+function choice(){const n=history.length;switch(strategy){case 0:return n?history[n-1]:'C';case 1:return 'D';case 2:return 'C';case 3:return history.includes('D')?'D':'C';case 4:return Math.random()<.5?'C':'D';case 5:return n>=2&&history[n-1]==='D'&&history[n-2]==='D'?'D':'C';}}
+function scores(){ $('score').textContent='You: '+own+' · Other firm: '+other+' · '+history.length+'/10 rounds'; }
+function play(c){if(history.length>=10)return;const d=choice();const a=c==='C'?(d==='C'?3:0):(d==='C'?5:1),b=d==='C'?(c==='C'?3:0):(c==='C'?5:1);history.push(c);own+=a;other+=b;const text='Round '+history.length+': you '+(c==='C'?'cooperated':'undercut')+'; they '+(d==='C'?'cooperated':'undercut')+'. Points: '+a+' / '+b+'.';const li=document.createElement('li');li.textContent=text;$('history').append(li);scores();$('status').textContent=text;
+ if(history.length===10){$('cooperate').disabled=$('defect').disabled=true;$('identity').textContent=names[strategy];$('lesson').textContent=lessons[strategy];$('reveal').hidden=false;$('status').textContent+=' Match complete. Their strategy: '+names[strategy]+'. Final score: '+own+' / '+other+'.';}}
+function start(){strategy=Math.floor(Math.random()*names.length);history=[];own=other=0;$('history').textContent='';$('reveal').hidden=true;$('cooperate').disabled=$('defect').disabled=false;$('status').textContent='Round 1. Make your opening move.';scores();}
+$('cooperate').onclick=()=>play('C');$('defect').onclick=()=>play('D');$('new').onclick=start;start();
+
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>

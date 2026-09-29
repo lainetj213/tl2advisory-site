@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nim · TL2 Strategic Advisory</title>
+<meta name="description" content="Pick a heap, take as many stones as you like. Take the last stone to win.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta property="og:title" content="TL2 Nim">
+<meta property="og:description" content="Pick a heap, take as many stones as you like. Take the last stone to win.">
+<meta property="og:url" content="https://tl2advisory.com/nim.html">
+<meta property="og:image" content="https://tl2advisory.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tl2. Make the next move a better one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+.game { max-width: 540px; margin: 0 auto 40px; min-width: 0; }
+.game * { box-sizing: border-box; }
+.game .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0; }
+.game button, .game select, .game input { font: inherit; color: var(--text); background: var(--fill); border: 1px solid var(--border); border-radius: 8px; min-height: 44px; padding: 8px 12px; max-width: 100%; }
+.game button { cursor: pointer; touch-action: manipulation; }
+.game button:hover:not(:disabled) { background: var(--cell-hover); }
+.game button:disabled { opacity: .55; cursor: default; }
+.game button:focus-visible, .game input:focus-visible, .game select:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+.game .primary { background: var(--text); color: var(--bg); font-weight: 600; }
+.game .primary:hover:not(:disabled) { background: var(--text); }
+.game .panel { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--fill); margin: 16px 0; }
+.game h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.game .status { min-height: 3.2em; font-weight: 600; margin: 16px 0; }
+.game .help { font-size: .85rem; color: var(--muted); }
+.game table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .85rem; }
+.game th, .game td { border-bottom: 1px solid var(--line); padding: 9px 4px; text-align: left; overflow-wrap: anywhere; }
+.game caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
+.game .score { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.game [hidden] { display: none !important; }
+#piles { display: grid; gap: 8px; } .game .heap { text-align: left; } .game .heap[aria-pressed="true"] { border: 3px solid var(--text); font-weight: 700; }</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html" aria-current="true">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+<main class="page">
+<h1>Nim</h1>
+<p class="lede">Pick a heap, take as many stones as you like. Take the last stone to win.</p>
+<section class="game" aria-label="Nim">
+<div class="bar"><label for="heaps">Heaps</label><select id="heaps"><option>3</option><option>4</option><option>5</option></select><label for="level">Level</label><select id="level"><option value="hard">Hard</option><option value="easy">Easy</option></select><button id="new" data-goatcounter-click="nim-new">New game</button></div>
+<p class="help">You go first. Choose one heap, then how many stones to take. Changing the setup starts a new game.</p><div id="piles"></div>
+<form id="turn"><div class="bar"><label for="take">Stones to take</label><input id="take" type="number" min="1" step="1" value="1" required style="width:90px"><button class="primary" id="remove" data-goatcounter-click="nim-move">Take stones</button></div></form>
+<p id="status" class="status" role="status" aria-live="polite"></p><div id="secret" class="panel" hidden><h2>The secret</h2><p id="explain"></p><p class="help">Write the heap sizes in binary and compare each column. An even count of 1s in every column means a nim-sum of zero. From any nonzero position, one move can restore that balance.</p></div>
+<noscript><p>This game needs JavaScript enabled.</p></noscript></section>
+</main>
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+</footer>
+
+<script>
+(function () {
+"use strict";
+const $ = id => document.getElementById(id);
+
+let piles, selected, ended, initial;
+function sum(a) { return a.reduce((x,y) => x ^ y, 0); }
+function choose(a,hard) {
+ const s = sum(a);
+ if(hard && s) { for(let i=0;i<a.length;i++) { const target=a[i]^s; if(target<a[i]) return [i,a[i]-target]; } }
+ const ids=a.map((n,i)=>n?i:-1).filter(i=>i>=0), i=ids[Math.floor(Math.random()*ids.length)];
+ return [i,1+Math.floor(Math.random()*a[i])];
+}
+function draw() {
+ $('piles').textContent='';
+ piles.forEach((n,i)=>{ const b=document.createElement('button'); b.type='button'; b.className='heap'; b.textContent='Heap '+(i+1)+' · '+n+' stone'+(n===1?'':'s'); b.setAttribute('aria-pressed',String(selected===i)); b.disabled=ended||!n; b.onclick=()=>{selected=i;draw();$('take').focus();}; $('piles').append(b); });
+ $('take').max=piles[selected]||1; $('take').disabled=ended; $('remove').disabled=ended;
+}
+function finish(who) { ended=true; $('secret').hidden=false; $('explain').textContent='The nim-sum combines heap sizes with a binary rule called XOR. It started at '+initial+'. On Hard, the computer leaves zero whenever it can; from zero, every legal move breaks the balance. A perfect opponent can beat the player who starts from zero.'; return who+' took the last stone and won. '; }
+function start(){ piles=Array.from({length:Number($('heaps').value)},()=>2+Math.floor(Math.random()*7)); initial=sum(piles);selected=0;ended=false; $('take').value=1;$('secret').hidden=true;$('status').textContent='Your turn. Choose a heap.';draw(); }
+$('turn').onsubmit=e=>{e.preventDefault();if(ended)return;const n=Number($('take').value);if(!Number.isInteger(n)||n<1||n>piles[selected]){$('status').textContent='Choose a whole number from 1 to '+piles[selected]+'.';return;}
+ const human='You took '+n+' from heap '+(selected+1)+'. '; piles[selected]-=n;
+ if(piles.every(x=>x===0)){$('status').textContent=human+finish('You');draw();return;}
+ const [i,k]=choose(piles,$('level').value==='hard');piles[i]-=k;const reply='Computer took '+k+' from heap '+(i+1)+'. ';
+ $('status').textContent=human+reply+(piles.every(x=>x===0)?finish('Computer'):'Your turn.');
+ if(!piles[selected])selected=piles.findIndex(x=>x>0);$('take').value=1;draw();
+};
+$('new').onclick=start;$('heaps').onchange=start;$('level').onchange=start;start();
+
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>

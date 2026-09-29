@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideas and Insights · TL2 Strategic Advisory</title>
+<meta name="description" content="Ideas and Insights from TL2: short notes on reading numbers, cash, value and advice, plus Tom's own notes on thinking and leadership.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta property="og:title" content="TL2 Ideas and Insights">
+<meta property="og:description" content="Short notes on reading numbers, cash, value and advice, plus notes on thinking and leadership.">
+<meta property="og:url" content="https://tl2advisory.com/ideas.html">
+<meta property="og:image" content="https://tl2advisory.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tl2. Make the next move a better one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+/* Ideas and Insights: three categories. TL2 Leadership (own labeled panel), then Finance and Deals, then Blog and Notes. Every entry carries a stable number (L-, F-, B-). */
+.entry { font-variant-numeric: tabular-nums; color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-right: 6px; letter-spacing: 0.04em; }
+.ideas li { scroll-margin-top: 24px; }
+.cat { margin: 0 0 64px; scroll-margin-top: 24px; }
+.cat-head { margin: 0 0 28px; }
+.cat-head h2 { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; margin: 0 0 6px; }
+.cat-head p { color: var(--muted); margin: 0; max-width: 60ch; }
+.topic { margin: 0 0 36px; }
+.topic:last-child { margin-bottom: 0; }
+.topic-head { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.topic-head .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; }
+.ideas h3, .ideas h4 { font-family: var(--serif); font-weight: 600; margin: 4px 0 6px; font-size: 1.15rem; line-height: 1.35; }
+.ideas .kind { letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; font-size: 0.7rem; }
+/* All three sets share one panel shape; each gets its own faint tint so the sections read apart. */
+.cat { border: 1px solid var(--line); border-radius: 12px; padding: 22px 22px 8px; background: var(--fill); }
+/* Leadership and Thinking: sage panel, green section header (Qui-Gon Green #43A047 on the dark themes, hunter green #355E3B on the light ones; both clear 3:1 for large text). */
+.cat.personal { background: color-mix(in srgb, var(--fill) 78%, #8FA98A); border-color: color-mix(in srgb, var(--line) 60%, #8FA98A); }
+.cat.personal .cat-head h2 { color: #43A047; }
+:root[data-theme="tl2"] .cat.personal, :root[data-theme="azimuth"] .cat.personal { background: color-mix(in srgb, var(--fill) 65%, #8FA98A); }
+:root[data-theme="tl2"] .cat.personal .cat-head h2, :root[data-theme="azimuth"] .cat.personal .cat-head h2 { color: #355E3B; }
+#finance { background: color-mix(in srgb, var(--fill) 90%, #1565C0); }
+#notes { background: var(--fill); }
+.cat .ideas li:last-child { padding-bottom: 14px; }
+.cat.personal .sig-h { margin-bottom: 8px; }
+.cat.personal .ideas li:last-child { padding-bottom: 14px; }
+.cat .fine { margin: 0 0 14px; font-size: 0.85rem; color: var(--muted); }
+.cat-note { margin: -16px 0 20px; }
+.closer { border-top: 1px solid var(--line); padding-top: 28px; text-align: center; color: var(--muted); font-size: 0.95rem; }
+.closer p { margin: 0; }
+footer.site .nw { white-space: nowrap; }
+:root[data-theme="tl2"] .ideas h3, :root[data-theme="tl2"] .ideas h4 { color: #1565C0; }
+@media (max-width: 640px) {
+  .cat { margin-bottom: 48px; }
+  .cat { padding: 18px 16px 6px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html" aria-current="true">Read</a>
+    <a href="labs.html">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Ideas and Insights</h1>
+  <p class="lede">Three sets. Tom's own writing on how to think and lead, the ideas TL2 Strategic Advisory keeps coming back to on looking at a business and deciding what it is worth, and shorter notes as they are written.</p>
+
+  <nav class="jump" aria-label="On this page"><a href="#leadership">Leadership and Thinking</a><a href="#finance">Finance and Deals</a><a href="#notes">Blog and Notes</a></nav>
+
+  <section class="cat personal" id="leadership" aria-labelledby="leadership-h">
+    <p class="sig-h"><span class="dot" aria-hidden="true"></span>TL2 Leadership &middot; Personal writing</p>
+    <div class="cat-head">
+      <h2 id="leadership-h">Leadership and Thinking</h2>
+      <p>My own notes on how to think, lead and decide, organized the way I work: think, lead, communicate, apply.</p>
+    </div>
+    <p class="fine">TL2 Leadership is Tom's personal writing. It sits apart from TL2 Strategic Advisory's client work, and none of it is advice.</p>
+
+    <ul class="ideas">
+      <li id="L-01">
+        <div class="kind"><span class="entry">L-01</span>Think</div>
+        <h3>Still thinking, or defending?</h3>
+        <p>The costly moment in a decision is when I stop testing an idea and start protecting it. The tell is when a challenge to the idea starts to feel like a challenge to me.</p>
+      </li>
+      <li id="L-02">
+        <div class="kind"><span class="entry">L-02</span>Think</div>
+        <h3>Work at the right height</h3>
+        <p>Most stuck problems are being worked from the wrong altitude: too close to see the pattern, or too high to touch the thing that has to change. Before I push harder, I climb, look, and land where the decision actually lives.</p>
+      </li>
+      <li id="L-03">
+        <div class="kind"><span class="entry">L-03</span>Lead</div>
+        <h3>Earn the scope</h3>
+        <p>A new leader who claims more ground than they have earned spends the next year defending it. I would rather take less, prove it, and be asked to take more.</p>
+      </li>
+      <li id="L-04">
+        <div class="kind"><span class="entry">L-04</span>Lead</div>
+        <h3>Say the why, free the how</h3>
+        <p>Commander's intent is the end state and the reason for it, said plainly enough that people can adapt when the plan meets reality. If I have to dictate every step, I have not explained the why well enough.</p>
+      </li>
+      <li id="L-05">
+        <div class="kind"><span class="entry">L-05</span>Communicate</div>
+        <h3>Writing is thinking with a receipt</h3>
+        <p>Reading gives me the feeling of understanding, and writing gives me the evidence. If I cannot put my position in one paragraph before the meeting, I do not have one yet.</p>
+      </li>
+      <li id="L-06">
+        <div class="kind"><span class="entry">L-06</span>Apply</div>
+        <h3>Debrief, then move</h3>
+        <p>After anything that matters, I set what happened next to what was planned and pull out one lesson, with no rank in the room and no blame. Then the work moves on, because the point of looking back is the next attempt.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cat" id="finance" aria-labelledby="finance-h">
+    <div class="cat-head">
+      <h2 id="finance-h">Finance and Deals</h2>
+      <p>The financial and deal lens, for owners, investors and lenders.</p>
+    </div>
+    <p class="fine cat-note">General information only, not advice.</p>
+
+    <div class="topic">
+      <h3 class="topic-head"><span class="dot" aria-hidden="true"></span>Reading the numbers</h3>
+      <ul class="ideas">
+        <li id="F-01">
+          <div class="kind"><span class="entry">F-01</span></div>
+          <h4>Reported is not the same as earned</h4>
+          <p>Historical financials tell you what a business reported. What it actually earns is a conclusion someone has to reason their way to.</p>
+        </li>
+        <li id="F-02">
+          <div class="kind"><span class="entry">F-02</span></div>
+          <h4>Ask what is missing</h4>
+          <p>A tidy story can be built from whatever data gets handed over. We also ask what was not provided, and why.</p>
+        </li>
+        <li id="F-03">
+          <div class="kind"><span class="entry">F-03</span></div>
+          <h4>Hold the first read loosely</h4>
+          <p>The first pass through the numbers leaves a strong impression. It is a useful place to start and an expensive place to stop.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="topic">
+      <h3 class="topic-head"><span class="dot" aria-hidden="true"></span>Earnings and cash</h3>
+      <ul class="ideas">
+        <li id="F-04">
+          <div class="kind"><span class="entry">F-04</span></div>
+          <h4>When the cash disagrees</h4>
+          <p>Working capital is where the story meets the bank account. Steady sales with customers paying slower, or strong demand with inventory piling up, is a tension worth running down.</p>
+        </li>
+        <li id="F-05">
+          <div class="kind"><span class="entry">F-05</span></div>
+          <h4>The same number, different businesses</h4>
+          <p>Two companies can show the same adjusted earnings and deserve very different conclusions. What sits underneath the figure matters as much as the figure.</p>
+        </li>
+        <li id="F-06">
+          <div class="kind"><span class="entry">F-06</span></div>
+          <h4>Today first, then tomorrow</h4>
+          <p>Cleaning up the numbers shows what the business earns today. Adding in what it might earn next year is a separate step, and we keep the two apart.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="topic">
+      <h3 class="topic-head"><span class="dot" aria-hidden="true"></span>What a price pays for</h3>
+      <ul class="ideas">
+        <li id="F-07">
+          <div class="kind"><span class="entry">F-07</span></div>
+          <h4>Fundamentals and the story around them</h4>
+          <p>Part of any price pays for how the business performs and part pays for the story told about it. Knowing which part is which makes it easier to say no to an expensive story.</p>
+        </li>
+        <li id="F-08">
+          <div class="kind"><span class="entry">F-08</span></div>
+          <h4>A weight you can explain</h4>
+          <p>Most values lean on more than one method. How much each one counts is a judgment we reason to and can explain in a sentence, not a setting we pick.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="topic">
+      <h3 class="topic-head"><span class="dot" aria-hidden="true"></span>Advice that holds up</h3>
+      <ul class="ideas">
+        <li id="F-09">
+          <div class="kind"><span class="entry">F-09</span></div>
+          <h4>Keep the inconvenient fact</h4>
+          <p>Good advice cuts detail that does not bear on the decision. A fact that weakens our own recommendation is not that kind of detail.</p>
+        </li>
+        <li id="F-10">
+          <div class="kind"><span class="entry">F-10</span></div>
+          <h4>Accuracy earns the right to question</h4>
+          <p>Getting the accounting right is not the end of the work. It is what earns the right to question the story.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cat" id="notes" aria-labelledby="notes-h">
+    <div class="cat-head">
+      <h2 id="notes-h">Blog and Notes</h2>
+      <p>Shorter, dated notes as they are written. The full list lives on <a href="news.html">Read</a>, with an RSS feed.</p>
+    </div>
+    <ul class="ideas">
+      <li id="B-01">
+        <div class="kind"><span class="entry">B-01</span> &middot; September 28, 2026</div>
+        <h3><a href="news.html">First light</a></h3>
+        <p>tl2advisory.com went live at 11:11 p.m. Eastern. More to come.</p>
+      </li>
+    </ul>
+  </section>
+
+
+  <div class="closer">
+    <p>Disagree with one of these? Good. Write to us at <a href="mailto:info@tl2advisory.com">info@tl2advisory.com</a>.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p><span class="nw">TL II Strategic Advisory LLC</span> &middot; <span class="nw">Cincinnati</span> &middot; <span class="nw">Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

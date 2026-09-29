@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solve the move · TL2 Strategic Advisory</title>
+<meta name="description" content="Find the move that changes the position. Then finish the line.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta property="og:title" content="TL2 Solve the move">
+<meta property="og:description" content="Find the move that changes the position. Then finish the line.">
+<meta property="og:url" content="https://tl2advisory.com/chess.html">
+<meta property="og:image" content="https://tl2advisory.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tl2. Make the next move a better one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+.game { max-width: 540px; margin: 0 auto 40px; min-width: 0; }
+.game * { box-sizing: border-box; }
+.game .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0; }
+.game button, .game select, .game input { font: inherit; color: var(--text); background: var(--fill); border: 1px solid var(--border); border-radius: 8px; min-height: 44px; padding: 8px 12px; max-width: 100%; }
+.game button { cursor: pointer; touch-action: manipulation; }
+.game button:hover:not(:disabled) { background: var(--cell-hover); }
+.game button:disabled { opacity: .55; cursor: default; }
+.game button:focus-visible, .game input:focus-visible, .game select:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+.game .primary { background: var(--text); color: var(--bg); font-weight: 600; }
+.game .primary:hover:not(:disabled) { background: var(--text); }
+.game .panel { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--fill); margin: 16px 0; }
+.game h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.game .status { min-height: 3.2em; font-weight: 600; margin: 16px 0; }
+.game .help { font-size: .85rem; color: var(--muted); }
+.game table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .85rem; }
+.game th, .game td { border-bottom: 1px solid var(--line); padding: 9px 4px; text-align: left; overflow-wrap: anywhere; }
+.game caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
+.game .score { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.game [hidden] { display: none !important; }
+
+#board { display: grid; grid-template-columns: repeat(8,minmax(0,1fr)); width: min(100%,480px); margin: 0 auto 16px; border: 2px solid var(--border); }
+.game .square { position: relative; min-height: 0; min-width: 0; aspect-ratio: 1; border: 0; border-radius: 0; padding: 0; font-size: clamp(25px,8vw,46px); line-height: 1; }
+.game .square.light { background: var(--border); } .game .square.dark { background: var(--cell-open); }
+.square .piece-w { color: white; -webkit-text-stroke: 1px black; text-shadow: 0 1px 1px black; }
+.square .piece-b { color: black; -webkit-text-stroke: 1px white; text-shadow: 0 1px 1px white; }
+.game .square[aria-pressed="true"],.game .square.hint { box-shadow: inset 0 0 0 4px var(--accent); }
+.game .square:focus-visible { outline: 3px solid var(--text); outline-offset: -3px; z-index: 1; }
+.square small { position: absolute; bottom: 1px; left: 2px; font: 9px var(--sans); color: var(--text); background: var(--bg); padding: 1px; }
+#promotion { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="index.html#look">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html" aria-current="true">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+<main class="page">
+<h1>Solve the move</h1>
+<p class="lede">Find the move that changes the position. Then finish the line.</p>
+<section class="game" aria-label="Solve the move">
+<div class="bar"><button id="daily" disabled data-goatcounter-click="chess-daily">Puzzle of the day</button><button id="next" disabled data-goatcounter-click="chess-next">Next</button><button id="hint" disabled data-goatcounter-click="chess-hint">Hint</button><button id="solution" disabled data-goatcounter-click="chess-solution">Show solution</button></div>
+<p id="label" class="help"></p><p id="status" class="status" role="status" aria-live="polite">Loading the board…</p><div id="board" role="group" aria-label="Chessboard" aria-describedby="board-help"></div>
+<div id="promotion" hidden><label for="promote">Promote pawn to</label><select id="promote"><option value="q">Queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option></select><button id="confirm">Confirm promotion</button><button id="cancel">Cancel</button></div>
+<p id="board-help" class="help">Select a piece, then its destination. Arrow keys move around the board; Enter or Space selects. Escape clears your selection. The side you play is always at the bottom.</p><p id="details" class="help"></p><p id="line" class="help"></p><p class="help">Puzzles: Lichess puzzle database, CC0. Move validation by chess.js (BSD-2-Clause, Jeff Hlywa).</p><p class="help" id="sample"></p>
+<noscript><p>This game needs JavaScript enabled.</p></noscript></section>
+</main>
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+</footer>
+
+<script>
+(function () {
+"use strict";
+const $ = id => document.getElementById(id);
+
+let Chess;
+let puzzles=[],index=0,game,line,step,side,selected=null,hint=null,done=false,focusAt=0,pending=null,transcript=[];
+const pieces={k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'},names={k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'};
+const uci=s=>({from:s.slice(0,2),to:s.slice(2,4),...(s[4]?{promotion:s[4]}:{})});
+function squares(){const a=[];for(let r=0;r<8;r++)for(let c=0;c<8;c++)a.push('abcdefgh'[side==='w'?c:7-c]+(side==='w'?8-r:r+1));return a;}
+function draw(restore=false){const board=$('board');board.textContent='';squares().forEach((sq,i)=>{const b=document.createElement('button'),p=game.get(sq);b.type='button';b.className='square '+((sq.charCodeAt(0)+Number(sq[1]))%2?'light':'dark');b.dataset.square=sq;b.tabIndex=i===focusAt?0:-1;b.setAttribute('aria-label',sq+(p?', '+(p.color==='w'?'White ':'Black ')+names[p.type]:', empty')+(hint===sq?', hint: move this piece':''));b.setAttribute('aria-pressed',String(selected===sq));if(hint===sq)b.classList.add('hint');b.setAttribute('aria-disabled',String(done));if(p){const span=document.createElement('span');span.className='piece-'+p.color;span.textContent=pieces[p.type];span.setAttribute('aria-hidden','true');b.append(span);}const coord=document.createElement('small');coord.textContent=sq;coord.setAttribute('aria-hidden','true');b.append(coord);board.append(b);});if(restore)board.children[focusAt].focus();}
+function metadata(){const p=puzzles[index];$('details').textContent='Rating: '+p.rating+' · Themes: '+p.themes.split(/\s+/).join(', ');}
+function finish(shown){done=true;selected=hint=null;$('hint').disabled=$('solution').disabled=true;metadata();$('status').textContent=shown?'Solution shown. Try another puzzle.':'Solved. '+(game.in_checkmate()?'Checkmate.':'You completed the line.');$('line').textContent='Line: '+transcript.join(' ');}
+function start(i,daily=false){index=i;const p=puzzles[i];game=new Chess(p.fen);line=p.moves.trim().split(/\s+/);const setup=game.move(uci(line[0]));step=1;side=game.turn();selected=hint=pending=null;done=false;focusAt=0;transcript=[];$('promotion').hidden=true;$('details').textContent='';$('line').textContent='';$('label').textContent=(daily?'Puzzle of the day (UTC)':'Puzzle '+(i+1)+' of '+puzzles.length)+' · '+(side==='w'?'White':'Black')+' to move';$('status').textContent='Opponent played '+setup.san+'. Your move.';$('sample').textContent=p.id.startsWith('sample-')?'Hand-built sample position; sample ratings are illustrative.':'';['hint','solution','next','daily'].forEach(id=>$(id).disabled=false);draw();}
+function move(from,to,promotion){if(done)return;const played=game.move({from,to,...(promotion?{promotion}:{})});if(!played){$('status').textContent='That move is not legal. Choose another destination.';selected=null;draw(true);return;}
+ const expected=line[step],actual=from+to+(played.promotion||'');if(actual!==expected){if(game.in_checkmate()){transcript.push(played.san);finish(false);draw(true);return;}game.undo();$('status').textContent='Legal, but not the puzzle move. Try again.';selected=hint=null;draw(true);return;}
+ transcript.push(played.san);step++;selected=hint=null;
+ if(step>=line.length)finish(false);else{const reply=game.move(uci(line[step++]));transcript.push(reply.san);$('status').textContent='Correct. Opponent played '+reply.san+'. Your move.';if(step>=line.length)finish(false);}draw(true);}
+$('board').onclick=e=>{const b=e.target.closest('button[data-square]');if(!b||done||pending)return;const sq=b.dataset.square;focusAt=squares().indexOf(sq);const p=game.get(sq);if(p&&p.color===side){selected=selected===sq?null:sq;hint=null;$('status').textContent=selected?sq+' selected. Choose a destination.':'Selection cleared.';draw(true);return;}if(!selected){$('status').textContent='Select one of your pieces first.';return;}const from=selected, pawn=game.get(from);if(pawn.type==='p'&&(sq[1]==='1'||sq[1]==='8')&&game.moves({verbose:true}).some(m=>m.from===from&&m.to===sq&&m.promotion)){pending=[from,sq];$('promotion').hidden=false;$('promote').value='q';$('promote').focus();}else move(from,sq);};
+$('confirm').onclick=()=>{if(!pending)return;const [from,to]=pending;pending=null;$('promotion').hidden=true;move(from,to,$('promote').value);};$('cancel').onclick=()=>{pending=null;$('promotion').hidden=true;selected=null;draw(true);};
+$('board').onkeydown=e=>{const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-8,ArrowDown:8};if(e.key==='Escape'){selected=hint=null;draw(true);return;}if(!(e.key in delta))return;e.preventDefault();focusAt=(focusAt+delta[e.key]+64)%64;draw(true);};
+$('hint').onclick=()=>{if(done)return;hint=line[step].slice(0,2);$('status').textContent='Hint: move the piece on '+hint+'.';draw();};
+$('solution').onclick=()=>{if(done)return;pending=null;$('promotion').hidden=true;while(step<line.length){const m=game.move(uci(line[step++]));transcript.push(m.san);}finish(true);draw();};
+const dailyIndex=()=>{const date=new Date().toISOString().slice(0,10);let seed=0;for(const c of date)seed=(Math.imul(seed,31)+c.charCodeAt(0))>>>0;return seed%puzzles.length;};
+$('next').onclick=()=>start((index+1)%puzzles.length);$('daily').onclick=()=>start(dailyIndex(),true);
+async function load(){try{({Chess}=await import('https://cdn.jsdelivr.net/npm/chess.js@0.13.4/chess.min.js'));if(typeof Chess!=='function')throw new Error('Chess library unavailable');const response=await fetch('data/puzzles.json');if(!response.ok)throw new Error('Puzzle file unavailable');const data=await response.json();if(!Array.isArray(data)||!data.length)throw new Error('No puzzles');
+ // Validate every complete line before enabling play. Bad replacements fail visibly.
+ for(const p of data){if(typeof p.id!=='string'||typeof p.fen!=='string'||typeof p.moves!=='string'||typeof p.themes!=='string'||!Number.isFinite(p.rating))throw new Error('Invalid puzzle record');const check=new Chess();if(!check.load(p.fen))throw new Error('Invalid FEN');const moves=p.moves.trim().split(/\s+/);if(moves.length<2||moves.length%2!==0)throw new Error('Line must end on a player move');for(const m of moves){if(!/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(m)||!check.move(uci(m)))throw new Error('Illegal puzzle line');}}
+ puzzles=data;start(dailyIndex(),true);
+ }catch(e){$('status').textContent='The puzzle could not load. Reload while online, or try again later.';$('label').textContent='Chess needs its library and data/puzzles.json served over HTTP.';console.error(e);}}
+load();
+
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>

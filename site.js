@@ -5,7 +5,9 @@
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
 
   /* Signup: Buttondown holds the email, Tally holds the optional questions. Blank = the section stays hidden on the live site. */
-  var SIGNUP = { buttondown: '', tally: 'https://tally.so/r/WOxNOe' }; /* buttondown: 'tl2advisory' goes in once Buttondown lifts its review hold */
+  var SIGNUP = { buttondown: 'tl2advisory', tally: 'https://tally.so/r/WOxNOe' }; /* Buttondown approved 2026.09.29 */
+  /* Feedback: a footer link on every page. A Tally form URL here replaces the email route. */
+  var FEEDBACK = { tally: 'https://tally.so/r/ODO0YM', mail: 'info@tl2advisory.com' };
 
   /* Themes. Navy is the default; the rest are one click away. */
   var THEMES = [
@@ -115,11 +117,34 @@
     if (SIGNUP.buttondown && SIGNUP.tally) {
       form.action = 'https://buttondown.com/api/emails/embed-subscribe/' + encodeURIComponent(SIGNUP.buttondown);
       q.href = SIGNUP.tally;
-      form.addEventListener('submit', function () { gc('subscribe', 'Newsletter signup'); });
+      form.addEventListener('submit', function (e) {
+        /* Honeypot: people never see the field, bots fill it. Filled = drop quietly; empty = keep it out of the post. */
+        var hp = document.getElementById('signup-hp');
+        if (hp && hp.value) { e.preventDefault(); document.getElementById('signup-said').textContent = 'Thanks.'; return; }
+        if (hp) hp.disabled = true;
+        gc('subscribe', 'Newsletter signup');
+        document.getElementById('signup-said').textContent = 'Finish signing up in the Buttondown tab that just opened.';
+        setTimeout(function () { if (hp) hp.disabled = false; }, 0);
+      });
       su.hidden = false;
     } else if (LOCAL) {
       su.hidden = false; su.classList.add('unwired');
       form.addEventListener('submit', function (e) { e.preventDefault(); document.getElementById('signup-said').textContent = 'Draft: the form is not wired to Buttondown yet.'; });
     }
+  }
+
+  /* Feedback link in every footer */
+  var foot = document.querySelector('footer.site');
+  if (foot && !foot.querySelector('.feedback') && (FEEDBACK.tally || FEEDBACK.mail)) {
+    var pageId = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '').replace(/[^a-z0-9-]/gi, '') || 'index';
+    var fp = document.createElement('p'), fa = document.createElement('a');
+    fp.className = 'feedback';
+    fa.textContent = 'Something off, or an idea? Tell us';
+    fa.href = FEEDBACK.tally ? FEEDBACK.tally + '?page=' + encodeURIComponent(pageId)
+      : 'mailto:' + FEEDBACK.mail + '?subject=' + encodeURIComponent('Site feedback') + '&body=' + encodeURIComponent('Page: ' + pageId + '\n\nWhat happened or what you would change:\n');
+    if (FEEDBACK.tally) { fa.target = '_blank'; fa.rel = 'noopener'; }
+    fa.addEventListener('click', function () { gc('feedback', 'Feedback link'); });
+    fp.appendChild(fa);
+    foot.insertBefore(fp, foot.lastElementChild);
   }
 })();
