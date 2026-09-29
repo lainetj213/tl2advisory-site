@@ -223,3 +223,5 @@ footer.site .motto { color: var(--text); font-weight: 600; letter-spacing: 0.02e
 :root[data-theme="tl2"] .btn[aria-pressed="true"], :root[data-theme="azimuth"] .btn[aria-pressed="true"] { color: #000; }
 :root[data-theme="tl2"] .moon-rim, :root[data-theme="azimuth"] .moon-rim { stroke: var(--muted); }
 @media (max-width: 400px) { nav.top { gap: 16px; flex-wrap: wrap; font-size: 0.78rem; } }
+/* "All of Signal" sat flush under the Radiooooo pill: .side p outranks .side-link, so give it its own room. */
+.side .side-link { margin: 26px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.85rem; }
