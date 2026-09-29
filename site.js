@@ -49,7 +49,7 @@
     var text = name + ', ' + lit + '% lit. ' + next + '.';
     moon.setAttribute('aria-label', 'Tonight’s moon: ' + text);
     if (tip) {
-      tip.innerHTML = '<strong></strong><span></span><em>Cincinnati sky, tonight. Weather by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</em>';
+      tip.innerHTML = '<strong></strong><span></span><em>Cincinnati sky, tonight.</em>';
       tip.querySelector('strong').textContent = name;
       tip.querySelector('span').textContent = lit + '% lit. ' + next + '.';
       /* Hover and focus open it; a click right after focus (a tap) must not close it again; Escape closes. */
@@ -63,21 +63,14 @@
     }
   }
 
-  /* Cincinnati time and weather beside the moon. Weather from Open-Meteo (no key, CC BY 4.0); a failed fetch just leaves the time. */
+  /* Cincinnati time beside the moon. (Weather came off 2026.09.29: Open-Meteo's free tier is non-commercial only.) */
   var here = document.getElementById('here');
   if (here) {
     var clock = function () {
       try { return new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit' }); } catch (e) { return ''; }
     };
-    var wx = '';
-    var paint = function () { here.textContent = 'Cincinnati ' + clock() + (wx ? ' · ' + wx : ''); };
+    var paint = function () { here.textContent = 'Cincinnati ' + clock(); };
     paint(); setInterval(paint, 30000);
-    var WMO = { 0: 'clear', 1: 'mostly clear', 2: 'partly cloudy', 3: 'overcast', 45: 'fog', 48: 'fog', 51: 'drizzle', 53: 'drizzle', 55: 'drizzle',
-      61: 'rain', 63: 'rain', 65: 'heavy rain', 71: 'snow', 73: 'snow', 75: 'heavy snow', 80: 'showers', 81: 'showers', 82: 'heavy showers', 95: 'thunderstorms', 96: 'thunderstorms', 99: 'thunderstorms' };
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=39.10&longitude=-84.51&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FNew_York')
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (j) { var c = j.current || {}; if (typeof c.temperature_2m === 'number') { wx = Math.round(c.temperature_2m) + '°F' + (WMO[c.weather_code] ? ', ' + WMO[c.weather_code] : ''); paint(); } })
-      .catch(function () {});
   }
 
   /* Reading signals for GoatCounter: outside links clicked, and how far down each page people get (50% and 90%, once each). */

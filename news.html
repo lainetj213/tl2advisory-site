@@ -55,7 +55,7 @@
 <footer class="site">
   <p class="motto">Numbers built to be challenged.</p>
   <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-owned</p>
-  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v12 · 2026.09.29</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v13 · 2026.09.29</span></p>
 </footer>
 
 <script>
@@ -71,7 +71,7 @@
   fetch('news/posts.json', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (rows) {
-      rows = (Array.isArray(rows) ? rows : []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+      rows = (Array.isArray(rows) ? rows : []).filter(function (p) { return !p.draft; }).sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
       if (!rows.length) return;
       rows.forEach(function (p) {
         var li = el('li'), h = el('h2');

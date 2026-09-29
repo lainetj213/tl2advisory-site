@@ -1,10 +1,9 @@
 {
   "signal": "rates",
   "as_of": "2026-09-25",
-  "built": "2026-09-29T12:10:07",
+  "built": "2026-09-29T12:40:03",
   "cadence": "weekly build; daily series, last available close",
-  "source": "Board of Governors of the Federal Reserve System (US), H.15 Selected Interest Rates, retrieved from FRED, Federal Reserve Bank of St. Louis",
-  "notice": "This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
+  "source": "Board of Governors of the Federal Reserve System, H.15 Selected Interest Rates",
   "series": [
     {
       "id": "DGS10",
@@ -15,7 +14,7 @@
       "chg_week": 0.16,
       "chg_year": 0.99,
       "unit": "percent",
-      "url": "https://fred.stlouisfed.org/series/DGS10"
+      "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
       "id": "DGS2",
@@ -26,7 +25,7 @@
       "chg_week": 0.05,
       "chg_year": 1.17,
       "unit": "percent",
-      "url": "https://fred.stlouisfed.org/series/DGS2"
+      "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
       "id": "DPRIME",
@@ -37,7 +36,7 @@
       "chg_week": 0.0,
       "chg_year": -0.25,
       "unit": "percent",
-      "url": "https://fred.stlouisfed.org/series/DPRIME"
+      "url": "https://www.federalreserve.gov/releases/h15/"
     }
   ]
 }

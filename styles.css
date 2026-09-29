@@ -205,10 +205,13 @@ footer.site .motto { color: var(--text); font-weight: 600; letter-spacing: 0.02e
 
 /* Color themes. Black is :root. Navy = the Merged 3 dark look; TL2 = Palette TL2 on white; Paper = the interim client palette on paper. */
 :root[data-theme="navy"] { color-scheme: dark; --bg: #101e2a; --text: #e9f0f5; --muted: #b5c4d0; --line: #2b4152; --fill: #142431; --accent: #74C69D; --cell: #1d3242; --cell-open: #0c1822; --border: #607482; --hover: #172936; --on-text: #101e2a; --cell-hover: #274155; --fine: #93a5b3; --moon-lit: #e9f0f5; --moon-dark: #1d3242; }
-:root[data-theme="tl2"] { color-scheme: light; --bg: #ffffff; --text: #0f2a4a; --muted: #4a5a6b; --line: #d9dee4; --fill: #f4f6f9; --accent: #D4621A; --cell: #dfe6ee; --cell-open: #ffffff; --border: #9aa8b6; --hover: #eef2f7; --on-text: #ffffff; --cell-hover: #cfd9e4; --fine: #5c6b7a; --moon-lit: #f2d98a; --moon-dark: #1565C0; }
+:root[data-theme="tl2"] { color-scheme: light; --bg: #ffffff; --text: #0f2a4a; --muted: #4a5a6b; --line: #d9dee4; --fill: #f4f6f9; --accent: #D4621A; --cell: #dfe6ee; --cell-open: #ffffff; --border: #7d8b99; --hover: #eef2f7; --on-text: #ffffff; --cell-hover: #cfd9e4; --fine: #5c6b7a; --moon-lit: #f2d98a; --moon-dark: #1565C0; }
 :root[data-theme="tl2"] a, :root[data-theme="tl2"] .lead, :root[data-theme="tl2"] h1, :root[data-theme="tl2"] h2 { color: #1565C0; }
-:root[data-theme="azimuth"] { color-scheme: light; --bg: #fafbf9; --text: #182e42; --muted: #506171; --line: #d5dcde; --fill: #f0f3ef; --accent: #D4621A; --cell: #dfe6e2; --cell-open: #fafbf9; --border: #95a4ad; --hover: #eaf0f5; --on-text: #ffffff; --cell-hover: #cdd8d2; --fine: #5f6f7d; --moon-lit: #e8cf85; --moon-dark: #1A3A5C; }
+:root[data-theme="azimuth"] { color-scheme: light; --bg: #fafbf9; --text: #182e42; --muted: #506171; --line: #d5dcde; --fill: #f0f3ef; --accent: #D4621A; --cell: #dfe6e2; --cell-open: #fafbf9; --border: #7f8d96; --hover: #eaf0f5; --on-text: #ffffff; --cell-hover: #cdd8d2; --fine: #5f6f7d; --moon-lit: #e8cf85; --moon-dark: #1A3A5C; }
 :root[data-theme="azimuth"] .devbox .dot, :root[data-theme="azimuth"] .sig-h .dot { background: #74C69D; }
+/* Light themes: white text on the canon orange is 3.8:1, so filled surfaces carrying text take a deeper orange (4.9:1). */
+:root[data-theme="tl2"] .tie-t.ok, :root[data-theme="azimuth"] .tie-t.ok, :root[data-theme="tl2"] .btn[aria-pressed="true"], :root[data-theme="azimuth"] .btn[aria-pressed="true"] { background: #B8531A; border-color: #B8531A; }
+:root[data-theme="tl2"] ::selection, :root[data-theme="azimuth"] ::selection { background: #B8531A; }
 :root[data-theme="tl2"] .n1, :root[data-theme="azimuth"] .n1 { color: #1565C0; }
 :root[data-theme="tl2"] .n2, :root[data-theme="azimuth"] .n2 { color: #2E7D32; }
 :root[data-theme="tl2"] .n3, :root[data-theme="azimuth"] .n3 { color: #B71C1C; }
@@ -218,9 +221,8 @@ footer.site .motto { color: var(--text); font-weight: 600; letter-spacing: 0.02e
 :root[data-theme="tl2"] .piece svg, :root[data-theme="azimuth"] .piece svg { filter: invert(1) hue-rotate(180deg); }
 .here { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 @media (max-width: 900px) { .here { display: none; } }
-/* Review fixes: stale text stays readable (the dated line carries the warning); pressed Flag keeps dark text on orange in light themes. */
+/* Review fixes: stale text stays readable (the dated line carries the warning). Pressed buttons in light themes sit on the deeper orange with white text (4.9:1). */
 .stale dd, .stale .sig-list { opacity: 1; color: var(--muted); }
-:root[data-theme="tl2"] .btn[aria-pressed="true"], :root[data-theme="azimuth"] .btn[aria-pressed="true"] { color: #000; }
 :root[data-theme="tl2"] .moon-rim, :root[data-theme="azimuth"] .moon-rim { stroke: var(--muted); }
 @media (max-width: 400px) { nav.top { gap: 16px; flex-wrap: wrap; font-size: 0.78rem; } }
 /* "All of Signal" sat flush under the Radiooooo pill: .side p outranks .side-link, so give it its own room. */
