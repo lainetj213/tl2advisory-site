@@ -57,8 +57,10 @@
       /* Hover and focus open it; a click right after focus (a tap) must not close it again; Escape closes. */
       var opened = 0;
       var show = function () { if (tip.hidden) { tip.hidden = false; opened = Date.now(); } }, hide = function () { tip.hidden = true; };
-      var wrap = moon.parentNode;
-      wrap.addEventListener('mouseenter', show); wrap.addEventListener('mouseleave', hide);
+      /* Hover on the moon only; the toolbar also holds the color picker and the clock. */
+      var t = 0, later = function () { clearTimeout(t); t = setTimeout(hide, 200); }, keep = function () { clearTimeout(t); show(); };
+      moon.addEventListener('mouseenter', keep); moon.addEventListener('mouseleave', later);
+      tip.addEventListener('mouseenter', keep); tip.addEventListener('mouseleave', later);
       moon.addEventListener('focus', show); moon.addEventListener('blur', hide);
       moon.addEventListener('click', function () { if (Date.now() - opened > 400) { if (tip.hidden) show(); else hide(); } });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });

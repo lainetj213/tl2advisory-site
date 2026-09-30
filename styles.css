@@ -234,3 +234,4 @@ footer.site .motto { font-size: 1.2rem; color: var(--accent); letter-spacing: 0.
 footer.site .nw { white-space: nowrap; }
 .sa-link { margin: 18px 0 6px; text-align: center; }
 .tech-ask { margin: 4px 0 28px; text-align: center; }
+footer.site .ver { font-size: 0.72em; letter-spacing: 0.02em; }
