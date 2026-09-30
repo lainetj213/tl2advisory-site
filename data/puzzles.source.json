@@ -1,0 +1,10 @@
+{
+  "file": "puzzles.json",
+  "count": 120,
+  "source": "Lichess puzzle database",
+  "source_url": "https://database.lichess.org/#puzzles",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "extracted": "2026-09-29",
+  "selection": "rating 900 to 1900, popularity 90 or higher"
+}

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TL2 · Make the next move a better one.</title>
 <meta name="description" content="TL2 Strategic Advisory. Numbers built to be challenged.">
+<link rel="canonical" href="https://tl2advisory.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -65,6 +66,7 @@
       <h2 id="dev-h">Something is being built here.</h2>
       <p>We are not ready to say much yet, and that is by design. The work comes first; the explanation follows. Check back soon, or reach out if you would rather not wait.</p>
       </section>
+      <p class="sa-link"><a class="pill" href="advisory.html" data-goatcounter-click="labs-to-sa">TL2 Strategic Advisory &rarr;</a></p>
       <p class="wait">While you wait</p>
       <div class="piece" id="piece" role="img" aria-label="A generated abstract study"></div>
       <h1 class="title" id="piece-title">Untitled</h1>
@@ -131,7 +133,7 @@
 <footer class="site">
   <p class="motto">Numbers built to be challenged.</p>
   <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
-  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v18 · 2026.09.29</span></p>
 </footer>
 
 <script>
@@ -305,10 +307,14 @@
     grid.innerHTML = ''; cells = [];
     mines = new Array(N * N).fill(false); opened = new Array(N * N).fill(false); flags = new Array(N * N).fill(false);
     over = false; started = false; leftEl.textContent = MINES; statusEl.textContent = '';
-    for (var i = 0; i < N * N; i++) {
-      var b = document.createElement('button');
-      b.type = 'button'; b.dataset.i = i; b.tabIndex = i === 0 ? 0 : -1;
-      cells.push(b); grid.appendChild(b); paint(i);
+    for (var r = 0; r < N; r++) {
+      var row = document.createElement('div'); row.setAttribute('role', 'row'); row.style.display = 'contents';
+      for (var c = 0; c < N; c++) {
+        var i = idx(r, c), b = document.createElement('button');
+        b.type = 'button'; b.setAttribute('role', 'gridcell'); b.dataset.i = i; b.tabIndex = i === 0 ? 0 : -1;
+        cells.push(b); row.appendChild(b); paint(i);
+      }
+      grid.appendChild(row);
     }
   }
   var pressTimer = null, longPressed = false;
@@ -320,12 +326,18 @@
   ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { grid.addEventListener(t, function () { clearTimeout(pressTimer); }); });
   grid.addEventListener('click', function (e) {
     var b = e.target.closest('.cell'); if (!b) return;
+    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
     if (longPressed) { longPressed = false; return; }
     var i = +b.dataset.i; if (flagMode) toggleFlag(i); else reveal(i);
   });
   grid.addEventListener('contextmenu', function (e) {
     var b = e.target.closest('.cell'); if (!b) return;
     e.preventDefault(); if (!longPressed) toggleFlag(+b.dataset.i);
+  });
+  // Whatever cell takes focus (click, right-click, touch) becomes the one Tab stop.
+  grid.addEventListener('focusin', function (e) {
+    var b = e.target.closest('.cell'); if (!b) return;
+    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
   });
   grid.addEventListener('keydown', function (e) {
     var b = e.target.closest('.cell'); if (!b) return;
@@ -335,7 +347,7 @@
     else if (e.key === 'ArrowDown') t = idx(Math.min(N - 1, r + 1), c);
     else if (e.key === 'ArrowUp') t = idx(Math.max(0, r - 1), c);
     else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFlag(i); return; }
-    if (t !== null) { e.preventDefault(); b.tabIndex = -1; cells[t].tabIndex = 0; cells[t].focus(); }
+    if (t !== null) { e.preventDefault(); cells.forEach(function (x) { x.tabIndex = -1; }); cells[t].tabIndex = 0; cells[t].focus(); }
   });
   modeBtn.addEventListener('click', function () {
     flagMode = !flagMode; modeBtn.setAttribute('aria-pressed', String(flagMode));

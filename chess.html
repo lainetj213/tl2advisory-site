@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solve the move · TL2 Strategic Advisory</title>
+<title>Solve the Move · TL2 Strategic Advisory</title>
 <meta name="description" content="Find the move that changes the position. Then finish the line.">
+<link rel="canonical" href="https://tl2advisory.com/chess.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TL2 Strategic Advisory">
-<meta property="og:title" content="TL2 Solve the move">
+<meta property="og:title" content="TL2 Solve the Move">
 <meta property="og:description" content="Find the move that changes the position. Then finish the line.">
 <meta property="og:url" content="https://tl2advisory.com/chess.html">
 <meta property="og:image" content="https://tl2advisory.com/assets/og.png">
@@ -76,19 +77,19 @@
   </div>
 </header>
 <main class="page">
-<h1>Solve the move</h1>
+<h1>Solve the Move</h1>
 <p class="lede">Find the move that changes the position. Then finish the line.</p>
-<section class="game" aria-label="Solve the move">
+<section class="game" aria-label="Solve the Move">
 <div class="bar"><button id="daily" disabled data-goatcounter-click="chess-daily">Puzzle of the day</button><button id="next" disabled data-goatcounter-click="chess-next">Next</button><button id="hint" disabled data-goatcounter-click="chess-hint">Hint</button><button id="solution" disabled data-goatcounter-click="chess-solution">Show solution</button></div>
 <p id="label" class="help"></p><p id="status" class="status" role="status" aria-live="polite">Loading the board…</p><div id="board" role="group" aria-label="Chessboard" aria-describedby="board-help"></div>
 <div id="promotion" hidden><label for="promote">Promote pawn to</label><select id="promote"><option value="q">Queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option></select><button id="confirm">Confirm promotion</button><button id="cancel">Cancel</button></div>
-<p id="board-help" class="help">Select a piece, then its destination. Arrow keys move around the board; Enter or Space selects. Escape clears your selection. The side you play is always at the bottom.</p><p id="details" class="help"></p><p id="line" class="help"></p><p class="help">Puzzles: Lichess puzzle database, CC0. Move validation by chess.js (BSD-2-Clause, Jeff Hlywa).</p><p class="help" id="sample"></p>
+<p id="board-help" class="help">Select a piece, then its destination. Arrow keys move around the board; Enter or Space selects. Escape clears your selection. The side you play is always at the bottom.</p><p id="details" class="help"></p><p id="line" class="help"></p><p class="help">Puzzles: Lichess puzzle database, CC0. Move validation by chess.js (BSD-2-Clause, Jeff Hlywa; <a href="assets/vendor/chess.js-0.13.4/LICENSE.txt">license</a>).</p><p class="help" id="sample"></p>
 <noscript><p>This game needs JavaScript enabled.</p></noscript></section>
 </main>
 <footer class="site">
   <p class="motto">Numbers built to be challenged.</p>
-  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
-  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v17 · 2026.09.29</span></p>
+  <p><span class="nw">TL II Strategic Advisory LLC</span> &middot; <span class="nw">Cincinnati</span> &middot; <span class="nw">Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v18 · 2026.09.29</span></p>
 </footer>
 
 <script>
@@ -116,7 +117,7 @@ $('hint').onclick=()=>{if(done)return;hint=line[step].slice(0,2);$('status').tex
 $('solution').onclick=()=>{if(done)return;pending=null;$('promotion').hidden=true;while(step<line.length){const m=game.move(uci(line[step++]));transcript.push(m.san);}finish(true);draw();};
 const dailyIndex=()=>{const date=new Date().toISOString().slice(0,10);let seed=0;for(const c of date)seed=(Math.imul(seed,31)+c.charCodeAt(0))>>>0;return seed%puzzles.length;};
 $('next').onclick=()=>start((index+1)%puzzles.length);$('daily').onclick=()=>start(dailyIndex(),true);
-async function load(){try{({Chess}=await import('https://cdn.jsdelivr.net/npm/chess.js@0.13.4/chess.min.js'));if(typeof Chess!=='function')throw new Error('Chess library unavailable');const response=await fetch('data/puzzles.json');if(!response.ok)throw new Error('Puzzle file unavailable');const data=await response.json();if(!Array.isArray(data)||!data.length)throw new Error('No puzzles');
+async function load(){try{({Chess}=await import('./assets/vendor/chess.js-0.13.4/chess.min.js'));if(typeof Chess!=='function')throw new Error('Chess library unavailable');const response=await fetch('data/puzzles.json');if(!response.ok)throw new Error('Puzzle file unavailable');const data=await response.json();if(!Array.isArray(data)||!data.length)throw new Error('No puzzles');
  // Validate every complete line before enabling play. Bad replacements fail visibly.
  for(const p of data){if(typeof p.id!=='string'||typeof p.fen!=='string'||typeof p.moves!=='string'||typeof p.themes!=='string'||!Number.isFinite(p.rating))throw new Error('Invalid puzzle record');const check=new Chess();if(!check.load(p.fen))throw new Error('Invalid FEN');const moves=p.moves.trim().split(/\s+/);if(moves.length<2||moves.length%2!==0)throw new Error('Line must end on a player move');for(const m of moves){if(!/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(m)||!check.move(uci(m)))throw new Error('Illegal puzzle line');}}
  puzzles=data;start(dailyIndex(),true);
