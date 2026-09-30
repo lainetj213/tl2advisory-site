@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Game Theory Reading · TL2 Strategic Advisory</title>
+<meta name="description" content="Game theory reading from TL2: the books and papers behind the four Labs strategy games, grouped by the game each one deepens.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta property="og:title" content="TL2 Game Theory Reading">
+<meta property="og:description" content="The books and papers behind the four Labs strategy games, grouped by the game each one deepens.">
+<meta property="og:url" content="https://tl2advisory.com/reading.html">
+<meta property="og:image" content="https://tl2advisory.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tl2. Make the next move a better one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+/* Game Theory Reading: one panel per group. Start here, then one group per Labs game. Every entry carries a stable number (R-). */
+.entry { font-variant-numeric: tabular-nums; color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-right: 6px; letter-spacing: 0.04em; }
+.ideas li { scroll-margin-top: 24px; }
+.cat { margin: 0 0 40px; scroll-margin-top: 24px; border: 1px solid var(--line); border-radius: 12px; padding: 22px 22px 8px; background: var(--fill); }
+.cat-head { margin: 0 0 22px; }
+.cat-head h2 { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; margin: 0 0 6px; }
+.cat-head p { color: var(--muted); margin: 0; max-width: 60ch; }
+.ideas h3 { font-family: var(--serif); font-weight: 600; margin: 4px 0 6px; font-size: 1.15rem; line-height: 1.35; overflow-wrap: anywhere; }
+.ideas .kind { letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; font-size: 0.7rem; }
+.ideas .by { color: var(--muted); margin: 0 0 6px; font-size: 0.92rem; }
+.cat .ideas li:last-child { padding-bottom: 14px; }
+#start { background: color-mix(in srgb, var(--fill) 90%, #1565C0); }
+.cat .fine { margin: -10px 0 20px; font-size: 0.85rem; color: var(--muted); }
+.closer { border-top: 1px solid var(--line); padding-top: 28px; text-align: center; color: var(--muted); font-size: 0.95rem; }
+.closer p { margin: 0; }
+footer.site .nw { white-space: nowrap; }
+:root[data-theme="tl2"] .ideas h3 { color: #1565C0; }
+@media (max-width: 640px) {
+  .cat { margin-bottom: 32px; padding: 18px 16px 6px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
+  <nav class="top" aria-label="Primary">
+    <a href="look.html">Look</a>
+    <a href="index.html#play">Play</a>
+    <a href="news.html">Read</a>
+    <a href="labs.html" aria-current="true">Labs</a>
+    <a href="signal.html">Signal</a>
+  </nav>
+  <div class="tools">
+    <span class="here" id="here"></span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
+    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
+    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Game Theory Reading</h1>
+  <p class="lede">The four strategy games in Labs are small versions of problems we see in real deals. These are the books and papers we would hand you after you play them.</p>
+
+  <nav class="jump" aria-label="On this page"><a href="#start">Start here</a><a href="#move">Solve the Move</a><a href="#nim">Nim</a><a href="#dilemma">Cooperate or Undercut</a><a href="#curse">The Winner’s Curse</a></nav>
+
+  <section class="cat" id="start" aria-labelledby="start-h">
+    <div class="cat-head">
+      <h2 id="start-h">Start here</h2>
+      <p>Two readings that set up everything else: what game theory is for, and how to use it without the math.</p>
+    </div>
+    <ul class="ideas">
+      <li id="R-01">
+        <div class="kind"><span class="entry">R-01</span>Book</div>
+        <h3>The Art of Strategy</h3>
+        <p class="by">Avinash Dixit and Barry Nalebuff &middot; 2008</p>
+        <p>If you read one book on this list, make it this one: sequential moves, the Prisoner’s Dilemma and mixed strategies in plain language, and the spine for every game on this page.</p>
+      </li>
+      <li id="R-02">
+        <div class="kind"><span class="entry">R-02</span>Essay</div>
+        <h3>What Is Game Theory Trying to Accomplish?</h3>
+        <p class="by">Robert Aumann &middot; 1985</p>
+        <p>A Nobel laureate’s short case that a theory earns its keep by what it helps you see, which is the right expectation to carry into everything else here.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cat" id="move" aria-labelledby="move-h">
+    <div class="cat-head">
+      <h2 id="move-h"><a href="chess.html">Solve the Move</a></h2>
+      <p>Find the move that changes the position, then prove it holds.</p>
+    </div>
+    <ul class="ideas">
+      <li id="R-03">
+        <div class="kind"><span class="entry">R-03</span>Book</div>
+        <h3>Thinking, Fast and Slow</h3>
+        <p class="by">Daniel Kahneman &middot; 2011</p>
+        <p>Every puzzle is a contest between the move that jumps out and the line you actually calculate, and this is the best account we know of why the first one feels so right and so often is not.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cat" id="nim" aria-labelledby="nim-h">
+    <div class="cat-head">
+      <h2 id="nim-h"><a href="nim.html">Nim</a></h2>
+      <p>A game that looks like judgment and turns out to be arithmetic.</p>
+    </div>
+    <ul class="ideas">
+      <li id="R-04">
+        <div class="kind"><span class="entry">R-04</span>Reference</div>
+        <h3>Algorithmic Game Theory</h3>
+        <p class="by">Noam Nisan, Tim Roughgarden, Éva Tardos and Vijay Vazirani, eds. &middot; 2007</p>
+        <p>Nim is the classic case of strategy that reduces to a calculation, and this graduate reference is where that idea goes next, from computing equilibria to designing the rules of an auction; dense, so dip into chapters rather than read it cover to cover.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cat" id="dilemma" aria-labelledby="dilemma-h">
+    <div class="cat-head">
+      <h2 id="dilemma-h"><a href="dilemma.html">Cooperate or Undercut</a></h2>
+      <p>Why cooperation can be the rational choice once the game is played more than once.</p>
+    </div>
+    <ul class="ideas">
+      <li id="R-05">
+        <div class="kind"><span class="entry">R-05</span>Book</div>
+        <h3>The Evolution of Cooperation</h3>
+        <p class="by">Robert Axelrod &middot; 1984</p>
+        <p>The computer tournaments behind the strategies in our game, and the clearest case for opening nice, answering an undercut, and forgiving fast.</p>
+      </li>
+      <li id="R-06">
+        <div class="kind"><span class="entry">R-06</span>Essays</div>
+        <h3>Metamagical Themas</h3>
+        <p class="by">Douglas Hofstadter &middot; 1985</p>
+        <p>Read the Prisoner’s Dilemma essays: Hofstadter works the payoff matrix through by hand and takes Axelrod’s results somewhere the tournament book does not, into what it means to reason like your opponent.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cat" id="curse" aria-labelledby="curse-h">
+    <div class="cat-head">
+      <h2 id="curse-h"><a href="bid.html">The Winner’s Curse</a></h2>
+      <p>Winning a competitive bid can mean you were the most optimistic person in the room.</p>
+    </div>
+    <ul class="ideas">
+      <li id="R-07">
+        <div class="kind"><span class="entry">R-07</span>Book</div>
+        <h3>The Winner’s Curse</h3>
+        <p class="by">Richard Thaler &middot; 1992</p>
+        <p>The book our game is named for, and the evidence that smart, well-informed bidders overpay in common-value auctions far more often than the theory says they should.</p>
+      </li>
+      <li id="R-08">
+        <div class="kind"><span class="entry">R-08</span>Paper</div>
+        <h3>Epsilon Theory: Viewing Capital Markets through the Lenses of Game Theory and History</h3>
+        <p class="by">Ben Hunt &middot; 2013</p>
+        <p>An auction price reflects what bidders believe other bidders believe, not only what the business is worth, and this paper is the sharpest treatment we know of that gap between the story and the fundamentals.</p>
+      </li>
+      <li id="R-09">
+        <div class="kind"><span class="entry">R-09</span>Book</div>
+        <h3>Noise: A Flaw in Human Judgment</h3>
+        <p class="by">Daniel Kahneman, Olivier Sibony and Cass R. Sunstein &middot; 2021</p>
+        <p>Every bidder in our game holds a noisy estimate of the same value, and this book explains why that scatter is larger than anyone expects and what disciplined people do about it.</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="closer">
+    <p>Think we missed one? Tell us at <a href="mailto:info@tl2advisory.com">info@tl2advisory.com</a>.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <p class="motto">Numbers built to be challenged.</p>
+  <p><span class="nw">TL II Strategic Advisory LLC</span> &middot; <span class="nw">Cincinnati</span> &middot; <span class="nw">Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v21 · 2026.09.30</span></p>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

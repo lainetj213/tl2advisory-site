@@ -45,6 +45,9 @@ nav.top a:hover, nav.top a[aria-current="page"], nav.top a[aria-current="true"] 
 .side p { margin: 0 0 14px; }
 .pill { display: inline-block; color: var(--text); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 7px 18px; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color .3s var(--ease), background .3s var(--ease); }
 .pill:hover { border-color: var(--text); background: var(--hover); }
+/* Play row on home: Sweep plays in place (current), the Labs games open their pages. */
+.games { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin: 16px 0 0; }
+.games .pill[aria-current] { border-color: var(--text); background: var(--hover); }
 
 /* Lead line above the piece */
 .lead { font-weight: 700; font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; margin: 12px 0 0; text-wrap: balance; }
