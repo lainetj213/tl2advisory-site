@@ -238,3 +238,10 @@ footer.site .nw { white-space: nowrap; }
 .sa-link { margin: 18px 0 6px; text-align: center; }
 .tech-ask { margin: 4px 0 28px; text-align: center; }
 footer.site .ver { font-size: 0.72em; letter-spacing: 0.02em; }
+
+/* v21.1 hotfix (Tom 2026.10.08): the "While you wait..." line sits directly above Sweep, and the Strategic Advisory link under the development box is a full button. */
+.block > .wait { margin: 0 0 8px; }
+.pill.sa-cta { margin-top: 10px; padding: 15px 36px; font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; background: var(--text); color: var(--bg); border-color: var(--text); }
+.pill.sa-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--on-text); }
+:root[data-theme="tl2"] .pill.sa-cta { color: var(--bg); }
+:root[data-theme="tl2"] .pill.sa-cta:hover, :root[data-theme="paper"] .pill.sa-cta:hover, :root[data-theme="azimuth"] .pill.sa-cta:hover { background: #B8531A; border-color: #B8531A; color: #ffffff; }
