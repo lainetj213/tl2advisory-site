@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#101e2a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
@@ -30,13 +30,14 @@
 </head>
 <body>
 <header class="site">
-  <a class="mark mark-labs" href="index.html" aria-label="TL2 Labs, home"><span>tl2<i>.</i></span><span class="labs-pill">Labs</span></a>
+  <a class="mark mark-labs" href="labs.html" aria-label="TL2 Labs, home"><span>tl2<i>.</i></span><span class="labs-pill">Labs</span></a>
   <nav class="top" aria-label="Primary">
     <a href="look.html">Look</a>
-    <a href="index.html#play">Play</a>
+    <a href="#play">Play</a>
     <a href="news.html">Read</a>
     <a href="labs.html" aria-current="page">Labs</a>
     <a href="signal.html">Signal</a>
+    <a href="index.html" data-goatcounter-click="labs-to-advisory">Advisory <span aria-hidden="true">&#8617;</span></a>
   </nav>
   <div class="tools">
     <span class="here" id="here"></span>
@@ -46,29 +47,237 @@
   </div>
 </header>
 
-<main class="page">
-  <h1>TL2 Labs</h1>
-  <p class="lede">Small things built to think with. Some are finished, most are not, and that is the point.</p>
-  <p class="tech-ask"><a class="pill" href="https://tally.so/r/ODO0YM?page=labs-tech-stack" target="_blank" rel="noopener" data-goatcounter-click="ask-tech-stack">Ask us about our tech stack!</a></p>
+<main class="stage">
+  <aside class="side left" aria-labelledby="signal-h">
+    <div class="note">
+      <h2 id="signal-h">Signal</h2>
+      <p>The world, live: markets, weather, shipping and conflict on one map. Worth a look once a day.</p>
+      <a class="pill" href="https://worldmonitor.app" target="_blank" rel="noopener" data-goatcounter-click="open-map">Open the map</a>
+      <p class="side-more">Something to listen to while you read: radio from any decade, anywhere on the map.</p>
+      <a class="pill" href="https://app.radiooooo.com" target="_blank" rel="noopener" data-goatcounter-click="open-radiooooo">Open Radiooooo</a>
+      <p class="side-link"><a href="signal.html" data-goatcounter-click="signal-from-home">All of Signal &rarr;</a></p>
+    </div>
+  </aside>
 
-  <ul class="ideas">
-    <li><div class="kind">Live</div><h2><a href="index.html#play">Sweep</a></h2><p>Eight by eight, ten surprises. The first tap is always safe.</p></li>
-    <li><div class="kind">Live</div><h2><a href="look.html">Studies</a></h2><p>A new abstract composition on every visit, drawn from a random seed. No two are the same.</p></li>
-    <li><div class="kind">Live</div><h2><a href="tieout.html">Tie-Out</a></h2><p>A grid of small numbers with a target at the end of every row and column. Switch cells on and off until everything balances.</p></li>
-    <li><div class="kind">Live</div><h2><a href="chess.html">Solve the Move</a></h2><p>A chess position with one strong move in it. Find it, then finish the line. A new puzzle every day.</p></li>
-    <li><div class="kind">Live</div><h2><a href="nim.html">Nim</a></h2><p>Heaps of stones, two players, take the last one to win. There is a hidden rule that decides every game.</p></li>
-    <li><div class="kind">Live</div><h2><a href="dilemma.html">Cooperate or Undercut</a></h2><p>Two firms, ten rounds, one hidden strategy on the other side. The classic prisoner's dilemma, played out.</p></li>
-    <li><div class="kind">Live</div><h2><a href="bid.html">The Winner’s Curse</a></h2><p>Five deals, four rival bidders, one noisy estimate each. Winning the auction and winning the deal are not the same thing.</p></li>
-    <li><div class="kind">Live</div><h2><a href="signal.html">Signal</a></h2><p>A short, checked read on what is moving: AI, rates, and a few good links. No feed to scroll and no noise.</p></li>
-    <li><div class="kind">Later</div><h2>Field Notes</h2><p>Short pieces on building things, reading well, and making decisions that hold up.</p></li>
-  </ul>
+  <div class="center">
+    <section id="intro" aria-labelledby="lead-h">
+      <h1 class="lead" id="lead-h">Small things built to think with.</h1>
+      <section class="devbox" aria-labelledby="dev-h">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Under development</p>
+      <h2 id="dev-h">Something is being built here.</h2>
+      <p>We are not ready to say much yet, and that is by design. The work comes first; the explanation follows. Check back soon, or reach out if you would rather not wait.</p>
+      </section>
+      <p class="sa-link"><a class="pill sa-cta" href="index.html" data-goatcounter-click="labs-to-sa">TL2 Strategic Advisory &rarr;</a></p>
+    </section>
+
+
+    <section class="block" id="play" aria-labelledby="sweep-h">
+      <p class="wait">While you wait...</p>
+      <h2 id="sweep-h">Sweep</h2>
+      <p class="muted">Every board has a few surprises. Find them before they find you.</p>
+      <nav class="games" aria-label="Games">
+        <a class="pill" href="#play" aria-current="true">Sweep</a>
+        <a class="pill" href="chess.html" data-goatcounter-click="play-chess">Solve the Move</a>
+        <a class="pill" href="nim.html" data-goatcounter-click="play-nim">Nim</a>
+        <a class="pill" href="dilemma.html" data-goatcounter-click="play-dilemma">Cooperate or Undercut</a>
+        <a class="pill" href="bid.html" data-goatcounter-click="play-bid">The Winner’s Curse</a>
+      </nav>
+      <div class="sweep">
+        <div class="sweep-bar">
+          <span><strong><span id="left">10</span></strong> <span class="muted">left</span></span>
+          <span style="display:flex;gap:8px">
+            <button class="btn ghost" id="mode" type="button" aria-pressed="false">Flag</button>
+            <button class="btn" id="reset" type="button" data-goatcounter-click="sweep-new-board">New board</button>
+          </span>
+        </div>
+        <div class="grid" id="grid" role="grid" aria-label="Sweep board, 8 by 8"></div>
+        <p class="sweep-status" id="status" aria-live="polite"></p>
+        <p class="sweep-help">Tap to reveal. Long-press, right-click or Flag to mark. Keyboard: arrows move, Enter reveals, F flags.</p>
+      </div>
+    </section>
+
+    <section class="block" id="all" aria-labelledby="all-h">
+      <h2 id="all-h">Everything in Labs</h2>
+      <p class="muted">Some are finished, most are not, and that is the point.</p>
+    <p class="tech-ask"><a class="pill" href="https://tally.so/r/ODO0YM?page=labs-tech-stack" target="_blank" rel="noopener" data-goatcounter-click="ask-tech-stack">Ask us about our tech stack!</a></p>
+
+    <ul class="ideas">
+      <li><div class="kind">Live</div><h2><a href="#play">Sweep</a></h2><p>Eight by eight, ten surprises. The first tap is always safe.</p></li>
+      <li><div class="kind">Live</div><h2><a href="look.html">Studies</a></h2><p>A new abstract composition on every visit, drawn from a random seed. Drawn fresh from a seed every visit.</p></li>
+      <li><div class="kind">Live</div><h2><a href="tieout.html">Tie-Out</a></h2><p>A grid of small numbers with a target at the end of every row and column. Switch cells on and off until everything balances.</p></li>
+      <li><div class="kind">Live</div><h2><a href="chess.html">Solve the Move</a></h2><p>A chess position with one strong move in it. Find it, then finish the line. A new puzzle every day.</p></li>
+      <li><div class="kind">Live</div><h2><a href="nim.html">Nim</a></h2><p>Heaps of stones, two players, take the last one to win. There is a hidden rule that decides every game.</p></li>
+      <li><div class="kind">Live</div><h2><a href="dilemma.html">Cooperate or Undercut</a></h2><p>Two firms, ten rounds, one hidden strategy on the other side. The classic prisoner's dilemma, played out.</p></li>
+      <li><div class="kind">Live</div><h2><a href="bid.html">The Winner’s Curse</a></h2><p>Five deals, four rival bidders, one noisy estimate each. Winning the auction and winning the deal are not the same thing.</p></li>
+      <li><div class="kind">Live</div><h2><a href="signal.html">Signal</a></h2><p>A short, checked read on what is moving: AI, rates, and a few good links. No feed to scroll and no noise.</p></li>
+      <li><div class="kind">Later</div><h2>Field Notes</h2><p>Short pieces on building things, reading well, and making decisions that hold up.</p></li>
+    </ul>
+    </section>
+
+    <section class="block signup" id="signup" aria-labelledby="signup-h" hidden>
+      <h2 id="signup-h">Updates, now and then</h2>
+      <p class="muted">A short note when something new ships. No noise, and you can leave any time.</p>
+      <form id="signup-form" method="post" target="_blank">
+        <label class="vh" for="signup-email">Email address</label>
+        <input type="email" name="email" id="signup-email" placeholder="you@example.com" autocomplete="email" required>
+        <input type="hidden" name="embed" value="1">
+        <div class="hp" aria-hidden="true"><label for="signup-hp">Leave this empty</label><input type="text" name="website" id="signup-hp" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+      <p class="signup-said" id="signup-said" aria-live="polite"></p>
+      <p class="fine">Your email goes to Buttondown, the service that sends these notes. We use it for nothing else.</p>
+      <p class="fine"><a id="signup-q" href="#" target="_blank" rel="noopener" data-goatcounter-click="signup-questions">Four optional questions</a>: what brought you here, what you would like to see, who you are, and how you found us.</p>
+    </section>
+
+    <section class="hf" aria-labelledby="hf-h">
+      <button class="hf-btn" id="high-five" type="button" data-goatcounter-click="high-five" aria-describedby="hf-said">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g class="hf-hand"><rect x="16" y="26" width="30" height="28" rx="12"/><rect x="17" y="10" width="7" height="24" rx="3.5"/><rect x="25" y="6" width="7" height="26" rx="3.5"/><rect x="33" y="8" width="7" height="24" rx="3.5"/><rect x="41" y="14" width="6.5" height="20" rx="3.25"/><rect x="5" y="30" width="18" height="7" rx="3.5" transform="rotate(35 14 33)"/><circle class="hf-eye" cx="26" cy="40" r="2"/><circle class="hf-eye" cx="36" cy="40" r="2"/><path class="hf-smile" d="M26 46 q5 4 10 0"/></g></svg>
+        <span id="hf-h">Give us a high five</span>
+      </button>
+      <p class="muted hf-said" id="hf-said" aria-live="polite">Let us know you stopped by.</p>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Inquiries</h2>
+      <p><a href="mailto:info@tl2advisory.com" data-goatcounter-click="email">info@tl2advisory.com</a></p>
+    </section>
+  </div>
+
+  <aside class="side right" aria-labelledby="labs-h">
+    <div class="note">
+      <h2 id="labs-h">TL2 Labs</h2>
+      <p>Games, generated studies, a weekly signal page, and whatever comes next.</p>
+      <a class="pill" href="#all" data-goatcounter-click="labs-see-all">See everything</a>
+    </div>
+  </aside>
 </main>
 
 <footer class="site">
   <p class="motto">Numbers built to be challenged.</p>
   <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
-  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v21 · 2026.09.30</span></p>
+  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v22 · 2026.10.12</span></p>
 </footer>
+
+<script>
+/* Sweep: 8 by 8, ten surprises; the first tap is always safe. */
+(function () {
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var FLAG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4.8 2.6h7.4l-2 3 2 3H4.8z" fill="#D4621A"/></svg>';
+  var MINE = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="#000"/></svg>';
+  var N = 8, MINES = 10;
+  var grid = document.getElementById('grid'), leftEl = document.getElementById('left');
+  var statusEl = document.getElementById('status'), modeBtn = document.getElementById('mode');
+  var cells, mines, opened, flags, over, started, flagMode = false;
+
+  function idx(r, c) { return r * N + c; }
+  function neighbors(i) {
+    var r = Math.floor(i / N), c = i % N, out = [];
+    for (var dr = -1; dr <= 1; dr++) for (var dc = -1; dc <= 1; dc++) {
+      if (!dr && !dc) continue;
+      var rr = r + dr, cc = c + dc;
+      if (rr >= 0 && rr < N && cc >= 0 && cc < N) out.push(idx(rr, cc));
+    }
+    return out;
+  }
+  function count(i) { return neighbors(i).filter(function (j) { return mines[j]; }).length; }
+  function plant(safe) {
+    var keep = neighbors(safe).concat([safe]), placed = 0;
+    while (placed < MINES) { var k = Math.floor(Math.random() * N * N); if (!mines[k] && keep.indexOf(k) < 0) { mines[k] = true; placed++; } }
+  }
+  function label(i) {
+    var r = Math.floor(i / N) + 1, c = i % N + 1, s = 'Row ' + r + ', column ' + c + ': ';
+    if (flags[i]) return s + 'flagged';
+    if (!opened[i]) return s + 'hidden';
+    if (mines[i]) return s + 'surprise';
+    var n = count(i); return s + (n ? n + ' nearby' : 'clear');
+  }
+  function paint(i) {
+    var b = cells[i]; b.className = 'cell'; b.innerHTML = '';
+    if (flags[i] && !opened[i]) { b.innerHTML = FLAG; }
+    else if (opened[i]) {
+      b.classList.add('open');
+      if (mines[i]) { b.classList.add('mine'); b.innerHTML = MINE; }
+      else { var n = count(i); if (n) { b.textContent = n; b.classList.add('n' + Math.min(n, 4)); } }
+    }
+    b.setAttribute('aria-label', label(i));
+  }
+  function reveal(i) {
+    if (over || opened[i] || flags[i]) return;
+    if (!started) { plant(i); started = true; }
+    if (mines[i]) {
+      over = true;
+      for (var k = 0; k < N * N; k++) if (mines[k]) { opened[k] = true; paint(k); }
+      statusEl.textContent = 'Found you first. Try a new board.';
+      return;
+    }
+    var stack = [i];
+    while (stack.length) {
+      var j = stack.pop();
+      if (opened[j] || flags[j]) continue;
+      opened[j] = true; paint(j);
+      if (count(j) === 0) stack = stack.concat(neighbors(j).filter(function (x) { return !opened[x]; }));
+    }
+    if (opened.filter(function (o) { return !o; }).length === MINES) { over = true; statusEl.textContent = 'Board cleared. Nothing got past you.'; }
+  }
+  function toggleFlag(i) {
+    if (over || opened[i]) return;
+    flags[i] = !flags[i]; paint(i);
+    leftEl.textContent = MINES - flags.filter(Boolean).length;
+  }
+  function build() {
+    grid.innerHTML = ''; cells = [];
+    mines = new Array(N * N).fill(false); opened = new Array(N * N).fill(false); flags = new Array(N * N).fill(false);
+    over = false; started = false; leftEl.textContent = MINES; statusEl.textContent = '';
+    for (var r = 0; r < N; r++) {
+      var row = document.createElement('div'); row.setAttribute('role', 'row'); row.style.display = 'contents';
+      for (var c = 0; c < N; c++) {
+        var i = idx(r, c), b = document.createElement('button');
+        b.type = 'button'; b.setAttribute('role', 'gridcell'); b.dataset.i = i; b.tabIndex = i === 0 ? 0 : -1;
+        cells.push(b); row.appendChild(b); paint(i);
+      }
+      grid.appendChild(row);
+    }
+  }
+  var pressTimer = null, longPressed = false;
+  grid.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest('.cell'); if (!b || e.button === 2) return;
+    longPressed = false;
+    pressTimer = setTimeout(function () { longPressed = true; toggleFlag(+b.dataset.i); if (navigator.vibrate) navigator.vibrate(15); }, 450);
+  });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { grid.addEventListener(t, function () { clearTimeout(pressTimer); }); });
+  grid.addEventListener('click', function (e) {
+    var b = e.target.closest('.cell'); if (!b) return;
+    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
+    if (longPressed) { longPressed = false; return; }
+    var i = +b.dataset.i; if (flagMode) toggleFlag(i); else reveal(i);
+  });
+  grid.addEventListener('contextmenu', function (e) {
+    var b = e.target.closest('.cell'); if (!b) return;
+    e.preventDefault(); if (!longPressed) toggleFlag(+b.dataset.i);
+  });
+  // Whatever cell takes focus (click, right-click, touch) becomes the one Tab stop.
+  grid.addEventListener('focusin', function (e) {
+    var b = e.target.closest('.cell'); if (!b) return;
+    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
+  });
+  grid.addEventListener('keydown', function (e) {
+    var b = e.target.closest('.cell'); if (!b) return;
+    var i = +b.dataset.i, r = Math.floor(i / N), c = i % N, t = null;
+    if (e.key === 'ArrowRight') t = idx(r, Math.min(N - 1, c + 1));
+    else if (e.key === 'ArrowLeft') t = idx(r, Math.max(0, c - 1));
+    else if (e.key === 'ArrowDown') t = idx(Math.min(N - 1, r + 1), c);
+    else if (e.key === 'ArrowUp') t = idx(Math.max(0, r - 1), c);
+    else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFlag(i); return; }
+    if (t !== null) { e.preventDefault(); cells.forEach(function (x) { x.tabIndex = -1; }); cells[t].tabIndex = 0; cells[t].focus(); }
+  });
+  modeBtn.addEventListener('click', function () {
+    flagMode = !flagMode; modeBtn.setAttribute('aria-pressed', String(flagMode));
+    modeBtn.textContent = flagMode ? 'Flag: on' : 'Flag';
+  });
+  document.getElementById('reset').addEventListener('click', build);
+  build();
+})();
+</script>
 <script src="site.js"></script>
 </body>
 </html>

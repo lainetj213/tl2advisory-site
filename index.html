@@ -1,267 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TL2 · Make the next move a better one.</title>
-<meta name="description" content="TL2 Strategic Advisory. Numbers built to be challenged.">
+<!doctype html>
+<html lang="en-US" data-bg="1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TL2 Strategic Advisory · Make the next move a better one.</title>
 <link rel="canonical" href="https://tl2advisory.com/">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="TL2 Strategic Advisory">
+<meta name="description" content="TL2 Strategic Advisory: a veteran-owned, CPA-led advisory firm in Cincinnati. Numbers built to be challenged.">
+<meta name="theme-color" content="#0b141c">
 <meta property="og:title" content="TL2 Strategic Advisory">
-<meta property="og:description" content="TL2 Strategic Advisory. Numbers built to be challenged.">
+<meta property="og:description" content="Make the next move a better one. A veteran-owned, CPA-led advisory firm in Cincinnati.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://tl2advisory.com/">
 <meta property="og:image" content="https://tl2advisory.com/assets/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="tl2. Make the next move a better one.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#101e2a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<script>var t="navy";try{t=localStorage.getItem("tl2-theme")||"navy"}catch(e){}if(t!=="black")document.documentElement.setAttribute("data-theme",t)</script>
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="TL2 Read" href="news/feed.xml">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>/* Old Labs links (index.html#play, #high-five, #contact-h and every other old-home ID) now go to labs.html; the study has its own page. Runs before analytics; keeps the query string. */
+(function(){function f(){var h=location.hash,q=location.search;if(h==='#look')location.replace('look.html'+q);else if(['#play','#signup','#intro','#all','#high-five','#hf-h','#hf-said','#contact-h','#dev-h','#lead-h','#signal-h','#sweep-h','#signup-h','#signup-form','#signup-email','#signup-q','#signup-said','#signup-hp','#grid','#status','#left','#mode','#reset','#here','#moon','#moon-tip','#theme-btn','#yr'].indexOf(h)>=0)location.replace('labs.html'+q+h)}f();addEventListener('hashchange',f)})();</script>
 <script data-goatcounter="https://tl2advisory.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</head>
-<body>
-<header class="site">
-  <a class="mark" href="index.html" aria-label="TL2, home">tl2<i>.</i></a>
-  <nav class="top" aria-label="Primary">
-    <a href="look.html">Look</a>
-    <a href="#play">Play</a>
-    <a href="news.html">Read</a>
-    <a href="labs.html">Labs</a>
-    <a href="signal.html">Signal</a>
-  </nav>
-  <div class="tools">
-    <span class="here" id="here"></span>
-    <button class="theme-btn" id="theme-btn" type="button" aria-label="Change colors"><span aria-hidden="true"></span></button>
-    <button class="moon" id="moon" type="button" aria-label="Tonight’s moon" aria-describedby="moon-tip"></button>
-    <div class="moon-tip" id="moon-tip" role="tooltip" hidden></div>
-  </div>
-</header>
-
-<main class="stage">
-  <aside class="side left" aria-labelledby="signal-h">
-    <div class="note">
-      <h2 id="signal-h">Signal</h2>
-      <p>The world, live: markets, weather, shipping and conflict on one map. Worth a look once a day.</p>
-      <a class="pill" href="https://worldmonitor.app" target="_blank" rel="noopener" data-goatcounter-click="open-map">Open the map</a>
-      <p class="side-more">Something to listen to while you read: radio from any decade, anywhere on the map.</p>
-      <a class="pill" href="https://app.radiooooo.com" target="_blank" rel="noopener" data-goatcounter-click="open-radiooooo">Open Radiooooo</a>
-      <p class="side-link"><a href="signal.html" data-goatcounter-click="signal-from-home">All of Signal &rarr;</a></p>
-    </div>
-  </aside>
-
-  <div class="center">
-    <section id="intro" aria-labelledby="lead-h">
-      <h1 class="lead" id="lead-h">Make the next move a better one.</h1>
-      <section class="devbox" aria-labelledby="dev-h">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Under development</p>
-      <h2 id="dev-h">Something is being built here.</h2>
-      <p>We are not ready to say much yet, and that is by design. The work comes first; the explanation follows. Check back soon, or reach out if you would rather not wait.</p>
-      </section>
-      <p class="sa-link"><a class="pill sa-cta" href="advisory.html" data-goatcounter-click="labs-to-sa">TL2 Strategic Advisory &rarr;</a></p>
-    </section>
-
-
-    <section class="block" id="play" aria-labelledby="sweep-h">
-      <p class="wait">While you wait...</p>
-      <h2 id="sweep-h">Sweep</h2>
-      <p class="muted">Every board has a few surprises. Find them before they find you.</p>
-      <nav class="games" aria-label="Games">
-        <a class="pill" href="#play" aria-current="true">Sweep</a>
-        <a class="pill" href="chess.html" data-goatcounter-click="play-chess">Solve the Move</a>
-        <a class="pill" href="nim.html" data-goatcounter-click="play-nim">Nim</a>
-        <a class="pill" href="dilemma.html" data-goatcounter-click="play-dilemma">Cooperate or Undercut</a>
-        <a class="pill" href="bid.html" data-goatcounter-click="play-bid">The Winner’s Curse</a>
-      </nav>
-      <div class="sweep">
-        <div class="sweep-bar">
-          <span><strong><span id="left">10</span></strong> <span class="muted">left</span></span>
-          <span style="display:flex;gap:8px">
-            <button class="btn ghost" id="mode" type="button" aria-pressed="false">Flag</button>
-            <button class="btn" id="reset" type="button" data-goatcounter-click="sweep-new-board">New board</button>
-          </span>
-        </div>
-        <div class="grid" id="grid" role="grid" aria-label="Sweep board, 8 by 8"></div>
-        <p class="sweep-status" id="status" aria-live="polite"></p>
-        <p class="sweep-help">Tap to reveal. Long-press, right-click or Flag to mark. Keyboard: arrows move, Enter reveals, F flags.</p>
-      </div>
-    </section>
-
-    <section class="block signup" id="signup" aria-labelledby="signup-h" hidden>
-      <h2 id="signup-h">Updates, now and then</h2>
-      <p class="muted">A short note when something new ships. No noise, and you can leave any time.</p>
-      <form id="signup-form" method="post" target="_blank">
-        <label class="vh" for="signup-email">Email address</label>
-        <input type="email" name="email" id="signup-email" placeholder="you@example.com" autocomplete="email" required>
-        <input type="hidden" name="embed" value="1">
-        <div class="hp" aria-hidden="true"><label for="signup-hp">Leave this empty</label><input type="text" name="website" id="signup-hp" tabindex="-1" autocomplete="off"></div>
-        <button class="btn" type="submit">Sign up</button>
-      </form>
-      <p class="signup-said" id="signup-said" aria-live="polite"></p>
-      <p class="fine">Your email goes to Buttondown, the service that sends these notes. We use it for nothing else.</p>
-      <p class="fine"><a id="signup-q" href="#" target="_blank" rel="noopener" data-goatcounter-click="signup-questions">Four optional questions</a>: what brought you here, what you would like to see, who you are, and how you found us.</p>
-    </section>
-
-    <section class="hf" aria-labelledby="hf-h">
-      <button class="hf-btn" id="high-five" type="button" data-goatcounter-click="high-five" aria-describedby="hf-said">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><g class="hf-hand"><rect x="16" y="26" width="30" height="28" rx="12"/><rect x="17" y="10" width="7" height="24" rx="3.5"/><rect x="25" y="6" width="7" height="26" rx="3.5"/><rect x="33" y="8" width="7" height="24" rx="3.5"/><rect x="41" y="14" width="6.5" height="20" rx="3.25"/><rect x="5" y="30" width="18" height="7" rx="3.5" transform="rotate(35 14 33)"/><circle class="hf-eye" cx="26" cy="40" r="2"/><circle class="hf-eye" cx="36" cy="40" r="2"/><path class="hf-smile" d="M26 46 q5 4 10 0"/></g></svg>
-        <span id="hf-h">Give us a high five</span>
-      </button>
-      <p class="muted hf-said" id="hf-said" aria-live="polite">Let us know you stopped by.</p>
-    </section>
-
-    <section class="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Inquiries</h2>
-      <p><a href="mailto:info@tl2advisory.com" data-goatcounter-click="email">info@tl2advisory.com</a></p>
-    </section>
-  </div>
-
-  <aside class="side right" aria-labelledby="labs-h">
-    <div class="note">
-      <h2 id="labs-h">TL2 Labs</h2>
-      <p>Small things built to think with. Games, generated studies, a weekly signal page, and whatever comes next.</p>
-      <a class="pill" href="labs.html" data-goatcounter-click="enter-labs">Enter Labs</a>
-    </div>
-  </aside>
-</main>
-
-<footer class="site">
-  <p class="motto">Numbers built to be challenged.</p>
-  <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
-  <p>&copy; <span id="yr">2026</span> &middot; <span class="ver">v21.1 · 2026.10.08</span></p>
-</footer>
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--surface:#0b141c;--alt:#111f2a;--card:#10202c;--ink:#eef3f4;--muted:#c2ccd2;--green:#74c69d;--rule:#41515e;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--surface);color:var(--ink);font-size:16px;line-height:1.65}h1,h2,h3,p{margin:0}a{color:inherit;text-underline-offset:5px}button,input{font:inherit}button,a,input{touch-action:manipulation}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:5px}.wrap{width:min(1200px,calc(100% - 80px));margin-inline:auto}.masthead{min-height:116px;display:flex;align-items:center;justify-content:space-between;gap:30px;border-bottom:1px solid var(--rule)}.brand{display:flex;align-items:center;gap:17px;text-decoration:none;flex-shrink:0}.wordmark{font-size:43px;font-weight:700;letter-spacing:-.03em;line-height:1;border-bottom:4px solid var(--green);padding-bottom:5px}.brand-label{padding-left:17px;border-left:1px solid var(--rule);font-size:12px;line-height:1.4;letter-spacing:.11em;text-transform:uppercase;font-weight:600}.masthead nav{display:flex;align-items:center;gap:28px;font-size:13px}.labs{padding:9px 16px;border:1px solid var(--rule);text-decoration:none}.hero{position:relative;isolation:isolate;padding:86px 0 88px;border-bottom:1px solid var(--rule)}.hero::after{content:'';position:absolute;inset:0 max(0px,calc((100vw - 1200px)/2)) 0 auto;width:32%;background:#143129;clip-path:polygon(42% 0,100% 0,100% 100%,0 100%);z-index:-1;display:none}html[data-bg="1"] .hero::after{display:block}.hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.9fr);gap:78px;align-items:center}.eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:23px}h1{font-size:clamp(40px,5.1vw,70px);font-weight:600;letter-spacing:-.045em;line-height:1.06;text-wrap:balance;max-width:720px}.subline{color:var(--green);font-size:23px;letter-spacing:-.02em;line-height:1.4;margin-top:23px}.intro{max-width:590px;color:var(--muted);font-size:17px;margin-top:25px}.button{display:inline-flex;align-items:center;gap:28px;min-height:52px;margin-top:30px;padding:14px 22px;background:var(--green);color:#112a43;font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent}.button:hover{background:#fff}.btns{display:flex;flex-wrap:wrap;gap:0 14px}.button.alt{background:transparent;color:var(--ink);border-color:var(--green)}.button.alt:hover{background:var(--card)}.hero-box{padding:32px;background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--green);min-height:300px;box-shadow:0 22px 55px #0002}.rot-bar{display:flex;align-items:center;gap:14px;margin:-12px 0 22px}.rot-track{flex:1;height:3px;background:var(--rule);overflow:hidden}.rot-fill{display:block;height:100%;background:var(--green);transform:scaleX(0);transform-origin:left}.rot-ctl{display:flex;align-items:center;gap:6px}.rot-dot{width:24px;height:24px;padding:0;border:0;background:transparent;position:relative}.rot-dot::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid var(--muted)}.rot-dot[aria-pressed="true"]::before{background:var(--green);border-color:var(--green)}.rot-pause{min-width:28px;height:24px;padding:0 4px;border:1px solid var(--rule);background:transparent;color:var(--muted);font-size:10px;line-height:1}.rot-slides{min-height:236px}.labs-lead .button{margin-top:18px}.hero-box .eyebrow{color:var(--green);margin-bottom:20px}.hero-box h2{font-size:27px;line-height:1.23;letter-spacing:-.025em}.hero-box ul{list-style:none;margin:24px 0 0;padding:0}.hero-box li{padding:11px 0;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}blockquote{margin:0;font-size:29px;line-height:1.3;letter-spacing:-.025em}.quote-note{color:var(--muted);font-size:14px;margin-top:25px}[hidden]{display:none!important}.section{padding:66px 0;border-bottom:1px solid var(--rule)}h2{font-size:clamp(29px,3vw,40px);font-weight:500;line-height:1.14;letter-spacing:-.035em}.section-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}.section-head p{color:var(--muted);max-width:500px}.approach{background:var(--alt)}.approach h2{max-width:680px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:34px}.step{border-top:2px solid var(--green);padding-top:20px}h3{font-size:19px;font-weight:600;letter-spacing:-.02em}.grid p{color:var(--muted);font-size:14px;line-height:1.7;margin-top:10px}.principle{background:var(--card);padding:25px;border-top:3px solid var(--green)}footer{padding:35px 0 120px}footer .tag{font-size:17px;font-weight:500;color:var(--green)}footer .legal{font-size:12px;color:var(--muted);margin-top:10px}footer .reg{font-size:11px;margin-top:6px}footer .ver{font-size:11px}.skip{position:fixed;top:-100px;left:15px;z-index:30;background:var(--card);padding:10px}.skip:focus{top:10px}.note-toggle.tuck{visibility:hidden;opacity:0}.note-toggle{transition:opacity .2s;position:fixed;right:20px;bottom:16px;z-index:12;border:1px solid #74c69d;background:#112a43;color:#eef3f4;font-size:13px;padding:13px 18px;border-radius:4px}.chat{position:fixed;right:20px;bottom:78px;z-index:20;width:min(365px,calc(100vw - 32px));max-height:calc(100dvh - 100px);overflow:auto;background:#142431;border:1px solid #607482;padding:22px;box-shadow:0 20px 80px #0008;border-radius:5px}.chat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.chat-head h2{font-size:20px}.chat-head button{border:0;background:transparent;color:#eef3f4;padding:5px;font-size:22px}.badge{font-size:11px;color:#74c69d}.chat p{font-size:13px;color:#c6d4e1}.starters{display:grid;gap:7px;margin:16px 0}.starters button{background:#1a3a5c;border:1px solid #607482;padding:10px;color:#eef3f4;font-size:12px;text-align:left;border-radius:3px}.chat form{display:flex;gap:8px;margin-top:17px}.chat input{min-width:0;width:100%;border:1px solid #607482;background:#0b141c;color:#fff;padding:10px;font-size:13px}.send{border:0;background:#74c69d;color:#112a43;padding:8px 12px;font-size:13px}.reply{border-left:2px solid #74c69d;padding-left:12px;margin-top:13px}.chat label{display:block;font-size:12px;margin-top:12px}.chat-email{user-select:text;overflow-wrap:anywhere}.chat .sent{margin-top:15px;color:#eef3f4;overflow-wrap:anywhere}
+@media(max-width:950px){.hero-grid{gap:34px;grid-template-columns:1.3fr 1fr}.hero-box{padding:24px}.section-head{gap:36px}.masthead nav{gap:15px}.wrap{width:calc(100% - 48px)}}
+@media(max-width:700px){.masthead nav{justify-content:flex-start;gap:22px}.masthead nav a{white-space:nowrap}.nav-mail{display:none}.wrap{width:calc(100% - 40px)}.masthead{padding-block:23px;min-height:0;flex-wrap:wrap;gap:20px}.masthead nav{width:100%;justify-content:space-between}.brand-label{font-size:11px}.hero{padding:49px 0}.hero-grid,.section-head,.grid{grid-template-columns:1fr;gap:28px}.hero-grid{gap:38px}.hero::after{width:60%;right:0}.subline{font-size:20px}.intro{font-size:16px}.hero-box{min-height:0;padding:26px}.hero-box h2{font-size:26px}.section{padding:46px 0}.grid{gap:25px;margin-top:29px}.grid p{font-size:15px}.section-head{gap:20px}.note-toggle{right:12px;bottom:12px;font-size:12px}.chat{right:16px;bottom:74px}footer{padding-bottom:112px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.skip,.note-toggle,.chat,.rot-ctl{display:none!important}}
+</style></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap masthead"><a class="brand" href="index.html" aria-label="TL2 Strategic Advisory home"><span class="wordmark">TL2</span><span class="brand-label">Strategic<br>Advisory</span></a><nav aria-label="Main navigation"><a class="labs" href="labs.html" data-goatcounter-click="sa-to-labs">TL2 Labs →</a><a class="nav-mail" href="mailto:info@tl2advisory.com">Let’s have a conversation</a></nav></header>
+<main id="main"><section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">Independent thinking. Shared purpose.</p><h1>Make the next move a better one.</h1><p class="subline">Numbers built to be challenged.</p><p class="intro">TL2 Strategic Advisory is a veteran-owned, CPA-led advisory firm in Cincinnati for leaders navigating complexity, change, and work that cannot be reduced to a template. We help owners and leaders think through the financial questions behind their most important decisions.</p><div class="btns"><a class="button" href="mailto:info@tl2advisory.com">Let’s have a conversation <span aria-hidden="true">↗</span></a></div></div>
+<aside class="hero-box" aria-roledescription="carousel" aria-label="Highlights"><div class="rot-bar"><div class="rot-track" aria-hidden="true"><span class="rot-fill" id="rot-fill"></span></div><div class="rot-ctl"><button type="button" class="rot-pause" id="rot-pause" aria-label="Stop rotation" aria-pressed="false">❚❚</button><button type="button" class="rot-dot" data-go="1" aria-label="Show tile 1" aria-pressed="true"></button><button type="button" class="rot-dot" data-go="2" aria-label="Show tile 2" aria-pressed="false"></button><button type="button" class="rot-dot" data-go="3" aria-label="Show tile 3" aria-pressed="false"></button></div></div><div class="rot-slides" id="rot-slides" aria-live="off"><div data-box="1" role="group" aria-roledescription="slide" aria-label="1 of 3"><p class="eyebrow">Before the next move</p><h2>Get clear on the questions that matter</h2><ul><li>What are we really deciding?</li><li>What is it worth, and why?</li><li>What has to happen next?</li></ul></div><div data-box="2" role="group" aria-roledescription="slide" aria-label="2 of 3" hidden><p class="eyebrow">An honest starting point</p><h2>Before you commit</h2><ul><li>The hard thing, said before it becomes your problem.</li><li>The number, tested before you depend on it.</li><li>The path forward, built to hold when it gets difficult.</li></ul></div><div data-box="3" role="group" aria-roledescription="slide" aria-label="3 of 3" hidden><p class="eyebrow">A clearer way forward</p><blockquote>“You should know where the ground is firm before you take the next step.”</blockquote><p class="quote-note">We help you test what matters and move with your eyes open.</p></div></div></aside></div></section>
+<section class="section"><div class="wrap section-head"><h2>Clarity before value<br>is committed.</h2><p>The pressure to move can outrun the evidence. We help you understand what the numbers support, where the uncertainty sits, and what needs to be answered before you act.</p></div></section>
+<section class="section approach"><div class="wrap"><h2>Rigorous enough to matter.<br>Clear enough to move.</h2><div class="grid"><article class="step"><h3>See the system</h3><p>We surface the conditions, constraints, and connections shaping your decision.</p></article><article class="step"><h3>Frame the choice</h3><p>We make the tradeoffs clear so you can weigh your options and set priorities.</p></article><article class="step"><h3>Build momentum</h3><p>We turn the chosen direction into accountable action that holds after the meeting.</p></article></div></div></section>
+<section class="section"><div class="wrap"><h2>Serious about the work.</h2><div class="grid"><article class="principle"><h3>Senior judgment</h3><p>The person you speak with is the person doing the thinking. Experience is applied to your question, not delegated away from it.</p></article><article class="principle"><h3>Direct access</h3><p>You work with us directly, from the first conversation to the last. No layers, no handoffs.</p></article><article class="principle"><h3>Defined scope</h3><p>We agree on the question, the work, and the timeline up front, so you know what you are getting and when.</p></article></div></div></section>
+<section class="section labs-lead" aria-labelledby="labs-h"><div class="wrap section-head"><h2 id="labs-h">More than the numbers.</h2><div><p>We know deals, and we build with the tools reshaping how work gets done. See what we’re building in TL2 Labs.</p><a class="button" href="labs.html" data-goatcounter-click="sa-labs-leadin">Visit TL2 Labs <span aria-hidden="true">→</span></a></div></div></section></main>
+<footer class="wrap"><p class="tag">Numbers built to be challenged.</p><p class="legal">TL2 Strategic Advisory · Cincinnati · Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span> · <a href="labs.html" data-goatcounter-click="foot-labs">TL2 Labs →</a></p><p class="legal reg">TL II Strategic Advisory LLC is a registered CPA firm with the Accountancy Board of Ohio.</p><p class="legal"><span class="ver">v22 · 2026.10.12</span></p></footer>
+<button class="note-toggle" id="note-toggle" aria-expanded="false" aria-controls="chat">Leave a note!</button>
+<section class="chat" id="chat" aria-labelledby="chat-title" hidden><div class="chat-head"><div><h2 id="chat-title">Leave a note!</h2></div><button id="close-chat" aria-label="Close">×</button></div><p>Hi. What’s on your mind? Your note opens as an email to <a href="mailto:info@tl2advisory.com">info@tl2advisory.com</a>, ready to send.</p><div class="starters"><button>I’m weighing a big decision</button><button>I want a second look at a number</button><button>Just saying hello</button></div><div id="messages" role="log" aria-live="polite" aria-relevant="additions"></div><label for="note">Your note</label><form id="note-form"><input id="note" autocomplete="off" placeholder="What’s on your mind?" required><button class="send" type="submit">Email this note</button></form></section>
 <script>
-/* Old links to the study (index.html#look) now go to its own page. */
-if (location.hash === '#look') location.replace('look.html');
-
-/* Sweep: 8 by 8, ten surprises; the first tap is always safe. */
-(function () {
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  var FLAG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4.8 2.6h7.4l-2 3 2 3H4.8z" fill="#D4621A"/></svg>';
-  var MINE = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="#000"/></svg>';
-  var N = 8, MINES = 10;
-  var grid = document.getElementById('grid'), leftEl = document.getElementById('left');
-  var statusEl = document.getElementById('status'), modeBtn = document.getElementById('mode');
-  var cells, mines, opened, flags, over, started, flagMode = false;
-
-  function idx(r, c) { return r * N + c; }
-  function neighbors(i) {
-    var r = Math.floor(i / N), c = i % N, out = [];
-    for (var dr = -1; dr <= 1; dr++) for (var dc = -1; dc <= 1; dc++) {
-      if (!dr && !dc) continue;
-      var rr = r + dr, cc = c + dc;
-      if (rr >= 0 && rr < N && cc >= 0 && cc < N) out.push(idx(rr, cc));
-    }
-    return out;
-  }
-  function count(i) { return neighbors(i).filter(function (j) { return mines[j]; }).length; }
-  function plant(safe) {
-    var keep = neighbors(safe).concat([safe]), placed = 0;
-    while (placed < MINES) { var k = Math.floor(Math.random() * N * N); if (!mines[k] && keep.indexOf(k) < 0) { mines[k] = true; placed++; } }
-  }
-  function label(i) {
-    var r = Math.floor(i / N) + 1, c = i % N + 1, s = 'Row ' + r + ', column ' + c + ': ';
-    if (flags[i]) return s + 'flagged';
-    if (!opened[i]) return s + 'hidden';
-    if (mines[i]) return s + 'surprise';
-    var n = count(i); return s + (n ? n + ' nearby' : 'clear');
-  }
-  function paint(i) {
-    var b = cells[i]; b.className = 'cell'; b.innerHTML = '';
-    if (flags[i] && !opened[i]) { b.innerHTML = FLAG; }
-    else if (opened[i]) {
-      b.classList.add('open');
-      if (mines[i]) { b.classList.add('mine'); b.innerHTML = MINE; }
-      else { var n = count(i); if (n) { b.textContent = n; b.classList.add('n' + Math.min(n, 4)); } }
-    }
-    b.setAttribute('aria-label', label(i));
-  }
-  function reveal(i) {
-    if (over || opened[i] || flags[i]) return;
-    if (!started) { plant(i); started = true; }
-    if (mines[i]) {
-      over = true;
-      for (var k = 0; k < N * N; k++) if (mines[k]) { opened[k] = true; paint(k); }
-      statusEl.textContent = 'Found you first. Try a new board.';
-      return;
-    }
-    var stack = [i];
-    while (stack.length) {
-      var j = stack.pop();
-      if (opened[j] || flags[j]) continue;
-      opened[j] = true; paint(j);
-      if (count(j) === 0) stack = stack.concat(neighbors(j).filter(function (x) { return !opened[x]; }));
-    }
-    if (opened.filter(function (o) { return !o; }).length === MINES) { over = true; statusEl.textContent = 'Board cleared. Nothing got past you.'; }
-  }
-  function toggleFlag(i) {
-    if (over || opened[i]) return;
-    flags[i] = !flags[i]; paint(i);
-    leftEl.textContent = MINES - flags.filter(Boolean).length;
-  }
-  function build() {
-    grid.innerHTML = ''; cells = [];
-    mines = new Array(N * N).fill(false); opened = new Array(N * N).fill(false); flags = new Array(N * N).fill(false);
-    over = false; started = false; leftEl.textContent = MINES; statusEl.textContent = '';
-    for (var r = 0; r < N; r++) {
-      var row = document.createElement('div'); row.setAttribute('role', 'row'); row.style.display = 'contents';
-      for (var c = 0; c < N; c++) {
-        var i = idx(r, c), b = document.createElement('button');
-        b.type = 'button'; b.setAttribute('role', 'gridcell'); b.dataset.i = i; b.tabIndex = i === 0 ? 0 : -1;
-        cells.push(b); row.appendChild(b); paint(i);
-      }
-      grid.appendChild(row);
-    }
-  }
-  var pressTimer = null, longPressed = false;
-  grid.addEventListener('pointerdown', function (e) {
-    var b = e.target.closest('.cell'); if (!b || e.button === 2) return;
-    longPressed = false;
-    pressTimer = setTimeout(function () { longPressed = true; toggleFlag(+b.dataset.i); if (navigator.vibrate) navigator.vibrate(15); }, 450);
-  });
-  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { grid.addEventListener(t, function () { clearTimeout(pressTimer); }); });
-  grid.addEventListener('click', function (e) {
-    var b = e.target.closest('.cell'); if (!b) return;
-    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
-    if (longPressed) { longPressed = false; return; }
-    var i = +b.dataset.i; if (flagMode) toggleFlag(i); else reveal(i);
-  });
-  grid.addEventListener('contextmenu', function (e) {
-    var b = e.target.closest('.cell'); if (!b) return;
-    e.preventDefault(); if (!longPressed) toggleFlag(+b.dataset.i);
-  });
-  // Whatever cell takes focus (click, right-click, touch) becomes the one Tab stop.
-  grid.addEventListener('focusin', function (e) {
-    var b = e.target.closest('.cell'); if (!b) return;
-    cells.forEach(function (x) { x.tabIndex = -1; }); b.tabIndex = 0;
-  });
-  grid.addEventListener('keydown', function (e) {
-    var b = e.target.closest('.cell'); if (!b) return;
-    var i = +b.dataset.i, r = Math.floor(i / N), c = i % N, t = null;
-    if (e.key === 'ArrowRight') t = idx(r, Math.min(N - 1, c + 1));
-    else if (e.key === 'ArrowLeft') t = idx(r, Math.max(0, c - 1));
-    else if (e.key === 'ArrowDown') t = idx(Math.min(N - 1, r + 1), c);
-    else if (e.key === 'ArrowUp') t = idx(Math.max(0, r - 1), c);
-    else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFlag(i); return; }
-    if (t !== null) { e.preventDefault(); cells.forEach(function (x) { x.tabIndex = -1; }); cells[t].tabIndex = 0; cells[t].focus(); }
-  });
-  modeBtn.addEventListener('click', function () {
-    flagMode = !flagMode; modeBtn.setAttribute('aria-pressed', String(flagMode));
-    modeBtn.textContent = flagMode ? 'Flag: on' : 'Flag';
-  });
-  document.getElementById('reset').addEventListener('click', build);
-  build();
-})();
-</script>
-<script src="site.js"></script>
-</body>
-</html>
+(()=>{'use strict';const slides=[...document.querySelectorAll('[data-box]')],dots=[...document.querySelectorAll('.rot-dot')],fill=document.getElementById('rot-fill'),pauseBtn=document.getElementById('rot-pause'),box=document.querySelector('.hero-box'),live=document.getElementById('rot-slides');const DWELL=8000;let cur=0,elapsed=0,last=0,stopped=matchMedia('(prefers-reduced-motion: reduce)').matches,hover=false,raf=0;function paint(){fill.style.transform='scaleX('+Math.min(1,elapsed/DWELL)+')'}function show(i){cur=(i+slides.length)%slides.length;slides.forEach((e,k)=>e.hidden=k!==cur);dots.forEach((d,k)=>d.setAttribute('aria-pressed',String(k===cur)));elapsed=0;paint()}function running(){return !stopped&&!hover&&!document.hidden}function tick(now){raf=0;if(!running())return;elapsed+=Math.min(now-last,100);last=now;if(elapsed>=DWELL)show(cur+1);else paint();raf=requestAnimationFrame(tick)}function kick(){if(running()&&!raf){last=performance.now();raf=requestAnimationFrame(tick)}}function setStopped(v){stopped=v;pauseBtn.setAttribute('aria-pressed',String(v));pauseBtn.setAttribute('aria-label',v?'Start rotation':'Stop rotation');pauseBtn.textContent=v?'▶':'❚❚';live.setAttribute('aria-live',v?'polite':'off');kick()}dots.forEach((d,k)=>d.onclick=()=>{setStopped(true);show(k)});pauseBtn.onclick=()=>setStopped(!stopped);box.addEventListener('mouseenter',()=>{hover=true});box.addEventListener('mouseleave',()=>{hover=false;kick()});box.addEventListener('focusin',e=>{if(e.target!==pauseBtn&&!stopped)setStopped(true)});document.addEventListener('visibilitychange',kick);setStopped(stopped);show(0);
+const chat=document.getElementById('chat'),toggle=document.getElementById('note-toggle'),input=document.getElementById('note'),log=document.getElementById('messages');function openChat(open){chat.hidden=!open;toggle.setAttribute('aria-expanded',String(open));(open?input:toggle).focus()}toggle.onclick=()=>openChat(chat.hidden);document.getElementById('close-chat').onclick=()=>openChat(false);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!chat.hidden)openChat(false)});/* On a phone the fixed note button would sit over the carousel controls; it steps aside while they are in view. */if('IntersectionObserver'in window){const narrow=matchMedia('(max-width: 700px)');let near=false;const tuck=()=>toggle.classList.toggle('tuck',narrow.matches&&near&&chat.hidden);new IntersectionObserver(es=>{near=es[0].isIntersecting;tuck()},{rootMargin:-Math.max(0,innerHeight-96)+'px 0px 0px 0px'}).observe(document.querySelector('.rot-ctl'));narrow.addEventListener('change',tuck)}/* Astra v22 #1: the primary action opens the addressed email draft; starters fill the note. */function draft(message){location.href='mailto:info@tl2advisory.com?subject='+encodeURIComponent('A note from tl2advisory.com')+'&body='+encodeURIComponent(message);log.replaceChildren();const sent=document.createElement('p');sent.className='sent';sent.textContent=message;const done=document.createElement('p');done.className='reply';done.textContent='Your email app should open with this note addressed to info@tl2advisory.com. Send it from there and we will reply.';log.append(sent,done);input.value=''}document.querySelectorAll('.starters button').forEach(b=>b.onclick=()=>{input.value=b.textContent;input.focus()});document.getElementById('note-form').onsubmit=e=>{e.preventDefault();if(input.value.trim())draft(input.value.trim())}})();
+</script></body></html>
