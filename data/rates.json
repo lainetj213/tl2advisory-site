@@ -1,7 +1,7 @@
 {
   "signal": "rates",
-  "as_of": "2026-10-01",
-  "built": "2026-10-05T07:00:08",
+  "as_of": "2026-10-12",
+  "built": "2026-10-13T17:48:35",
   "cadence": "weekly build; daily series, last available close",
   "source": "Board of Governors of the Federal Reserve System, H.15 Selected Interest Rates",
   "series": [
@@ -9,10 +9,10 @@
       "id": "DGS10",
       "label": "10-year Treasury",
       "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity",
-      "value": 5.24,
-      "date": "2026-10-01",
-      "chg_week": 0.06,
-      "chg_year": 1.12,
+      "value": -9999.0,
+      "date": "2026-10-12",
+      "chg_week": -10004.31,
+      "chg_year": -10003.05,
       "unit": "percent",
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
@@ -20,10 +20,10 @@
       "id": "DGS2",
       "label": "2-year Treasury",
       "title": "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity",
-      "value": 4.78,
-      "date": "2026-10-01",
-      "chg_week": -0.09,
-      "chg_year": 1.23,
+      "value": -9999.0,
+      "date": "2026-10-12",
+      "chg_week": -10003.84,
+      "chg_year": -10002.52,
       "unit": "percent",
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
@@ -31,10 +31,10 @@
       "id": "DPRIME",
       "label": "Bank prime rate",
       "title": "Bank Prime Loan Rate",
-      "value": 7.0,
-      "date": "2026-10-01",
+      "value": -9999.0,
+      "date": "2026-10-12",
       "chg_week": 0.0,
-      "chg_year": -0.25,
+      "chg_year": -10006.25,
       "unit": "percent",
       "url": "https://www.federalreserve.gov/releases/h15/"
     }
