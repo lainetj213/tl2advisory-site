@@ -254,3 +254,17 @@ footer.site .ver { font-size: 0.72em; letter-spacing: 0.02em; }
 .pill.sa-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--on-text); }
 :root[data-theme="tl2"] .pill.sa-cta { color: var(--bg); }
 :root[data-theme="tl2"] .pill.sa-cta:hover, :root[data-theme="paper"] .pill.sa-cta:hover, :root[data-theme="azimuth"] .pill.sa-cta:hover { background: #B8531A; border-color: #B8531A; color: #ffffff; }
+/* FX reference (staged 2026.10.14): sits under Rates reference, same panel; a table, because four columns read better than a list. */
+.fx-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.fx-table thead th{font-size:0.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 0 8px;border-bottom:1px solid var(--line)}
+.fx-table th:first-child,.fx-table td:first-child{text-align:left}
+.fx-table td{padding:8px 0;border-bottom:1px solid var(--line);text-align:right;color:var(--text);font-size:0.86rem;white-space:nowrap}
+.fx-table tbody th{text-align:left;font-weight:400;color:var(--text);font-size:0.86rem;padding:8px 10px 8px 0;border-bottom:1px solid var(--line);letter-spacing:0;text-transform:none;white-space:normal}.fx-table tr.row-stale th .code{font-style:italic;color:var(--text)}
+.fx-table td.num{font-weight:600}
+.fx-table .code{display:block;font-size:0.66rem;color:var(--muted);letter-spacing:.06em}
+.fx-table .na{color:var(--muted)}
+.fx-table tr.row-stale td{font-style:italic}
+.fx-table th+th,.fx-table td+td{padding-left:14px}
+@media (max-width:520px){.fx-table thead th{font-size:0.6rem;letter-spacing:.03em}.fx-table td{font-size:0.8rem}.fx-table th+th,.fx-table td+td{padding-left:10px}.fx-table th .long{display:none}}
+.fx-table th .short{display:none}@media (max-width:520px){.fx-table th .short{display:inline}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
