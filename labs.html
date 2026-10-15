@@ -55,6 +55,12 @@
       <a class="pill" href="https://worldmonitor.app" target="_blank" rel="noopener" data-goatcounter-click="open-map">Open the map</a>
       <p class="side-more">Something to listen to while you read: radio from any decade, anywhere on the map.</p>
       <a class="pill" href="https://app.radiooooo.com" target="_blank" rel="noopener" data-goatcounter-click="open-radiooooo">Open Radiooooo</a>
+      <section class="rates week" id="week" aria-labelledby="week-h" hidden>
+        <h3 class="sig-h" id="week-h"><span class="dot" aria-hidden="true"></span>Weekly</h3>
+        <dl id="week-list"></dl>
+        <p class="asof" id="week-asof"></p>
+        <p class="fine">Federal Reserve data (H.15, H.10), updated weekly, not live. General information only, not advice.</p>
+      </section>
       <p class="side-link"><a href="signal.html" data-goatcounter-click="signal-from-home">All of Signal &rarr;</a></p>
     </div>
   </aside>
@@ -155,7 +161,7 @@
 <footer class="site">
   <p class="motto">Numbers built to be challenged.</p>
   <p>TL II Strategic Advisory LLC &middot; Cincinnati &middot; Veteran-Owned <span role="img" aria-label="U.S. flag">🇺🇸</span></p>
-  <p>&copy; <span id="yr">2026</span><!-- <span class="ver">v30 · 2026.10.15</span> --></p>
+  <p>&copy; <span id="yr">2026</span><!-- <span class="ver">v31 · 2026.10.15</span> --></p>
 </footer>
 
 <script>
@@ -276,6 +282,44 @@
   });
   document.getElementById('reset').addEventListener('click', build);
   build();
+})();
+</script>
+<script>
+/* Weekly strip: three reference numbers from data/rates.json and data/fx.json, the same files and staleness rules as Signal.
+   A row past its window reads "not updated since"; a missing file drops its rows; no current row keeps the strip hidden. */
+(function () {
+  var box = document.getElementById('week'), list = document.getElementById('week-list'), asof = document.getElementById('week-asof');
+  if (!box) return;
+  function real(s) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || '')); if (!m) return null; var d = new Date(+m[1], +m[2] - 1, +m[3], 12); return d.getFullYear() === +m[1] && d.getMonth() === +m[2] - 1 && d.getDate() === +m[3] ? d : null; }
+  function short(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
+  function get(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(function () { return null; }); }
+  var rows = [], fresh = 0;
+  function ok(v) { return typeof v === 'number' && isFinite(v) && v > 0 && v < 1e6; }
+  function add(label, value, date, staleDays, href, suffix) {
+    var d = real(date); if (d && d - new Date() > 864e5) d = null; /* a future date is a bad date, never "fresh" */
+    var old = !d || Math.floor((new Date() - d) / 864e5) > staleDays;
+    var dt = document.createElement('dt'), a = document.createElement('a'); a.href = href; a.textContent = label; dt.appendChild(a);
+    var dd = document.createElement('dd'); dd.textContent = value;
+    var sp = document.createElement('span'); sp.className = 'rdate'; sp.textContent = d ? (old ? 'not updated since ' : '') + short(d) + (old ? '' : suffix || '') : 'date unavailable'; dd.appendChild(sp);
+    if (old) { dt.className = 'row-stale'; dd.classList.add('row-stale'); } else fresh++;
+    rows.push(dt, dd);
+  }
+  Promise.all([get('data/rates.json'), get('data/fx.json')]).then(function (j) {
+    function list_(x) { return x && Array.isArray(x.series) ? x.series.filter(function (s) { return s && typeof s === 'object'; }) : []; }
+    var r = list_(j[0]), f = list_(j[1]);
+    r.forEach(function (s) {
+      if (!ok(s.value)) return;
+      if (s.id === 'DGS10') add('10-year Treasury', s.value.toFixed(2) + '%', s.date, 12, 'signal.html', ' close');
+      if (s.id === 'DPRIME') add('Bank prime rate', s.value.toFixed(2) + '%', s.date, 23, 'signal.html');
+    });
+    f.forEach(function (s) {
+      if (s.id === 'EUR' && ok(s.usd_per_unit)) add('1 euro', '$' + s.usd_per_unit.toFixed(4), s.date, 19, 'signal.html');
+    });
+    if (!rows.length || !fresh) return; /* nothing current: stay hidden here; Signal still shows the dated stale view */
+    rows.forEach(function (e) { list.appendChild(e); });
+    asof.textContent = 'Each as of the date shown.';
+    box.hidden = false;
+  });
 })();
 </script>
 <script src="site.js"></script>
