@@ -1,9 +1,44 @@
 {
   "signal": "ai_signal",
-  "as_of": "2026-10-05",
+  "as_of": "2026-10-20",
   "status": "published",
   "source": "TL2 summaries of public reporting; each item links to its source.",
   "items": [
+    {
+      "headline": "Anthropic says the junior share of its technical hires fell to 9%",
+      "line": "Anthropic says the junior share of its technical hires fell from 27% to 9%, and that by August its employees' interactive AI agent hours outnumbered their own working hours six to one.",
+      "link": "https://anthropic.com/research/employment-at-anthropic",
+      "source": "Anthropic",
+      "date": "2026-10-16"
+    },
+    {
+      "headline": "AICPA issues a practice aid on AI in financial statement audits",
+      "line": "The Journal of Accountancy reports the AICPA issued a practice aid on how a company's use of AI in financial reporting, and an audit firm's own use of AI, affect a financial statement audit, and the AICPA's chief auditor said the auditor remains responsible for the audit and the opinion.",
+      "link": "https://www.journalofaccountancy.com/news/2026/oct/ai-and-the-audit-aicpa-publishes-practice-aid-to-assist-auditors/",
+      "source": "Journal of Accountancy",
+      "date": "2026-10-13"
+    },
+    {
+      "headline": "AICPA and AIUC pair a SOC 2 report with an AI agent certification",
+      "line": "The Journal of Accountancy reports the AICPA and the Artificial Intelligence Underwriting Company launched a single CPA-led engagement that combines a SOC 2 report with AIUC-1 certification for AI systems and agents.",
+      "link": "https://www.journalofaccountancy.com/news/2026/oct/aicpa-partners-on-new-offering-that-assures-ai-systems-and-agents/",
+      "source": "Journal of Accountancy",
+      "date": "2026-10-19"
+    },
+    {
+      "headline": "Federal agencies issue voluntary security guidance for testing frontier AI",
+      "line": "CyberScoop reports that CISA, the NSA and a Commerce Department standards center issued voluntary joint guidance urging AI companies to use technical controls, independent testing and shutdown policies when they test frontier models in sandbox environments.",
+      "link": "https://cyberscoop.com/federal-ai-agent-sandbox-security-guidance/",
+      "source": "CyberScoop",
+      "date": "2026-10-16"
+    },
+    {
+      "headline": "Meta releases the weights for its Muse Spark Open model",
+      "line": "Meta says Muse Spark Open, a model with 816 billion total parameters and a 1 million-token context window, is available through several API platforms, with its weights downloadable from Hugging Face and the major cloud providers.",
+      "link": "https://research.meta.ai/blog/muse-spark-open",
+      "source": "Meta",
+      "date": "2026-10-15"
+    },
     {
       "headline": "White House names its intelligence chief to lead its new AI task force",
       "line": "NPR reports President Trump named Director of National Intelligence Jay Clayton to lead a new \"Super Intelligence Force\" that will coordinate the federal government's work with AI companies and other groups.",
