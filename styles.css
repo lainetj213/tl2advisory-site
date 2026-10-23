@@ -172,6 +172,10 @@ footer.site { text-align: center; padding: 64px 16px 40px; font-size: 0.78rem; c
 .moon-tip strong { display: block; color: var(--text); font-weight: 600; }
 .moon-tip em { display: block; font-style: normal; font-size: 0.7rem; margin-top: 4px; color: var(--fine); }
 .center .devbox { margin: 36px auto 0; }
+.games-panel { margin: 18px auto 0; width: min(440px, 100%); box-sizing: border-box; border: 1px solid var(--line); border-radius: 14px; background: var(--fill); padding: 16px 18px 18px; }
+.games-panel .games { margin: 0; }
+.games-read { margin: 14px 0 0; font-size: 0.85rem; color: var(--muted); }
+.games-read a { color: var(--text); }
 .wait { margin: 72px 0 0; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .wait + .piece { margin-top: 14px; }
 .side-more { margin-top: 22px !important; }
@@ -274,3 +278,25 @@ footer.site .ver { font-size: 0.72em; letter-spacing: 0.02em; }
 .ideas.cards li { border: 1px solid var(--line); border-radius: 12px; background: var(--fill); padding: 16px 16px 18px; text-align: left; }
 .ideas.cards h2 { font-size: 1.05rem; }
 @media (max-width: 640px) { .ideas.cards { grid-template-columns: 1fr; gap: 12px; } }
+
+/* v35 header (Tom 2026.10.23 11:22): the logo block never moves, a thin rule separates it from the nav, and no label ever breaks onto two lines. When the links outgrow the middle column they scroll sideways instead of wrapping or crowding the logo. */
+@media (min-width: 841px) { header.site { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 20px; } }
+.mark, .mark-labs { white-space: nowrap; flex: none; }
+.mark-labs { flex-shrink: 0; }
+nav.top { min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; flex-wrap: nowrap; gap: 28px; scrollbar-width: none; padding: 6px; margin: -6px 0; }
+nav.top a:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 4px; }
+nav.top::-webkit-scrollbar { display: none; }
+nav.top a { white-space: nowrap; flex: none; }
+nav.top::before { content: ""; flex: none; align-self: center; width: 1px; height: 1.1em; background: var(--line); }
+nav.top > a:first-child { margin-left: auto; }
+nav.top > a:last-child { margin-right: auto; }
+@media (max-width: 1140px) { nav.top { gap: 22px; } }
+@media (max-width: 840px) {
+  nav.top::before { display: none; }
+  nav.top > a:first-child { margin-left: 0; } nav.top > a:last-child { margin-right: 0; }
+  nav.top { justify-content: center; }
+}
+@media (max-width: 640px) { nav.top { flex-wrap: wrap; overflow: visible; gap: 10px 20px; } }
+/* v35 R3 (Astra): the devbox invitation sits with the game. */
+#play { padding-top: 44px; }
+@media (max-width: 640px) { #play { padding-top: 32px; } }
